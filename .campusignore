@@ -1,0 +1,23 @@
+# Executables
+*.exe
+*.out
+*.app
+
+bin/*
+data/*
+scripts/releaseProject.ts
+
+# TS Files
+
+.gitignore
+package.json
+tsconfig.json
+.vscode
+bun.lock
+
+node_modules/*
+.git/*
+.vscode/*
+.build/*
+
+.campusignore
