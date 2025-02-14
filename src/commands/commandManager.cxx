@@ -18,6 +18,10 @@ vector<string> CommandManager::getNextLine()
     cout << "Max Input Size Reached" << endl;
     return vector<string>();
   }
+  
+  if(line.size() == 0) {
+    return vector<string>();
+  }
 
   strcpy(comando, line.c_str());
 
@@ -45,6 +49,7 @@ Command *CommandManager::encontrarComando(string name)
 
 int CommandManager::ejecutarComando(vector<string> argv)
 {
+  if(argv.size() == 0) return 0;
   Command *command = this->encontrarComando(argv[0]);
 
   // Buscar comando
