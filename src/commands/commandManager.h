@@ -31,7 +31,8 @@ private:
   std::vector<Command> comandos;
   Command *encontrarComando(std::string name);
 
-  static Command exitCommand;
+  static Command salirCommand;
+  static Command ayudaCommand;
 
 public:
   std::vector<std::string> getNextLine();
@@ -39,7 +40,8 @@ public:
 
   CommandManager()
   {
-    this->comandos.push_back(exitCommand);
+    this->comandos.push_back(salirCommand);
+    this->comandos.push_back(ayudaCommand);
   }
 };
 

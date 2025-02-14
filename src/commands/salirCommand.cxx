@@ -3,16 +3,16 @@
 
 using namespace std;
 
-int execution(vector<string> argv)
+int dummySalir(vector<string> argv)
 {
   exit(1);
   return 0;
 }
 
-Command CommandManager::exitCommand = *(
-    new Command({"exit",
+Command CommandManager::salirCommand = *(
+    new Command({"salir",
                  1,
                  [](vector<string> args)
                  {
-                   return execution(args);
+                   return dummySalir(args);
                  }}));
