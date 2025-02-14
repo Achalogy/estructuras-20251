@@ -35,7 +35,6 @@ private:
   static Command ayudaCommand;
   static Command cargarImagenCommand;
   static Command cargarVolumenCommand;
-
   static Command infoImagenCommand;
   static Command infoVolumenCommand;
   static Command proyeccion2DCommand;

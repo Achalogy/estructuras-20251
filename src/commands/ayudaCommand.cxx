@@ -41,9 +41,9 @@ int dummyAyuda(vector<string> argv)
     }else if(command == "cargar_volumen") {
 
       cout << "USO: " << endl;
-      cout << "     + Carga en memoria una serie ordenada de imágenes con el nombre base nombre_base y un tamaño de n_im imágenes."; << endl;
-      cout << "     + Las imágenes de la serie deben estar nombradas como nombre_baseXX.pgm, donde XX es un número de dos dígitos indicando la posición en la serie."; << endl;
-      cout << "     + Solo es posible cargar un único volumen por sesión; si se ejecuta nuevamente con otro nombre, el volumen anterior será reemplazado."; << endl << endl;
+      cout << "     + Carga en memoria una serie ordenada de imágenes con el nombre base nombre_base y un tamaño de n_im imágenes." << endl;
+      cout << "     + Las imágenes de la serie deben estar nombradas como nombre_baseXX.pgm, donde XX es un número de dos dígitos indicando la posición en la serie." << endl;
+      cout << "     + Solo es posible cargar un único volumen por sesión; si se ejecuta nuevamente con otro nombre, el volumen anterior será reemplazado." << endl << endl;
       cout << "SALIDA: " << endl;
       cout << "     Exito: El volumen nombre_base ha sido cargado." << endl;
       cout << "     Error: El volumen nombre_base no ha podido ser cargado." << endl << endl;
