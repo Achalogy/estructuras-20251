@@ -5,7 +5,7 @@ using namespace std;
 
 int dummySalir(vector<string> argv)
 {
-  exit(1);
+  exit(0);
   return 0;
 }
 
