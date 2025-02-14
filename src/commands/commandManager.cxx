@@ -55,7 +55,8 @@ int CommandManager::ejecutarComando(vector<string> argv)
     return 1;
   }
 
-  if(command->minArgs < argv.size()) {
+  if (argv.size() < command->minArgs)
+  {
     cout << "Argumentos insuficientes" << endl;
   }
 
