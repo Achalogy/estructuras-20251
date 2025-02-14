@@ -14,8 +14,8 @@ public:
   std::function<int(std::vector<std::string>)> function;
 
 public:
-  Command() {
-    
+  Command()
+  {
   }
   Command(std::string n, int nA, std::function<int(std::vector<std::string>)> f)
   {
@@ -33,6 +33,15 @@ private:
 
   static Command salirCommand;
   static Command ayudaCommand;
+  static Command cargarImagenCommand;
+  static Command cargarVolumenCommand;
+
+  static Command infoImagenCommand;
+  static Command infoVolumenCommand;
+  static Command proyeccion2DCommand;
+  static Command codificarImagenCommand;
+  static Command decodificarArchivoCommand;
+  static Command segmentarCommand;
 
 public:
   std::vector<std::string> getNextLine();
@@ -42,6 +51,14 @@ public:
   {
     this->comandos.push_back(salirCommand);
     this->comandos.push_back(ayudaCommand);
+    this->comandos.push_back(cargarImagenCommand);
+    this->comandos.push_back(cargarVolumenCommand);
+    this->comandos.push_back(infoImagenCommand);
+    this->comandos.push_back(infoVolumenCommand);
+    this->comandos.push_back(proyeccion2DCommand);
+    this->comandos.push_back(codificarImagenCommand);
+    this->comandos.push_back(decodificarArchivoCommand);
+    this->comandos.push_back(segmentarCommand);
   }
 };
 

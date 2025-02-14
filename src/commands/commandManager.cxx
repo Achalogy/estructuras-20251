@@ -55,11 +55,12 @@ int CommandManager::ejecutarComando(vector<string> argv)
     return 1;
   }
 
-  if(command->minArgs < argv.size()) {
+  if (argv.size() < command->minArgs)
+  {
     cout << "Argumentos insuficientes" << endl;
   }
 
-  command->function(argv);
+  int execCode = command->function(argv);
 
-  return 0;
+  return execCode;
 }
