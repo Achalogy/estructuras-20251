@@ -13,7 +13,7 @@ int dummyInfoVolumen(vector<string> argv)
         file.open(argv[1]);
     }
     catch (const ifstream::failure& e) {
-        cout << endl << "No se ha podido leer el archivo" << endl;
+        cout << endl << "No se ha podido leer el archivo " << argv[1] << endl;
     }
 
     file.close();
