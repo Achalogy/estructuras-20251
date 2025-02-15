@@ -6,6 +6,7 @@
 bin/*
 data/*
 scripts/releaseProject.ts
+scripts/test.sh
 
 # TS Files
 
