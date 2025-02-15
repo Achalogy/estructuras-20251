@@ -6,11 +6,11 @@ using namespace std;
 
 // SWITCH DE PRIMER ENTREGA
 
-bool valid = false;
+bool validInfoVolumen = false;
 
 int dummyInfoVolumen(vector<string> argv)
 {
-    if (valid)
+    if (validInfoVolumen)
     {
         cout << "Volumen cargado en memoria: nombre_base, tamaño: n_im, ancho: W, alto: H" << endl;
         return 0;

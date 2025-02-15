@@ -6,11 +6,11 @@ using namespace std;
 
 // SWITCH DE PRIMER ENTREGA
 
-bool valid = false;
+bool validProyeccion2D = false;
 
 int dummyProyeccion2D(vector<string> argv)
 {
-    if (valid)
+    if (validProyeccion2D)
     {
         cout << "La proyeccion 2D del volumen en memoria ha sido generada y almacenada en el archivo nombre_archivo.pgm" << endl;
             return 0;

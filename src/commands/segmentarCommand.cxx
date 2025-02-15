@@ -5,11 +5,11 @@ using namespace std;
 
 // SWITCH DE PRIMER ENTREGA
 
-bool valid = false;
+bool validSegmentar = false;
 
 int dummySegmentar(vector<string> argv)
 {
-  if (valid)
+  if (validSegmentar)
   {
     cout << "La imagen en memoria fue segmentada correctamente y almacenada en salida_imagen.pgm" << endl;
     return 0;

@@ -6,11 +6,11 @@ using namespace std;
 
 // SWITCH DE PRIMER ENTREGA
 
-bool valid = false;
+bool validCodificarImagen = false;
 
 int dummyCodificarImagen(vector<string> argv)
 {
-    if (valid)
+    if (validCodificarImagen)
     {
         cout << "La imagen en memoria ha sido codificada y almacenada en nombre_archivo.huf" << endl;
         return 0;

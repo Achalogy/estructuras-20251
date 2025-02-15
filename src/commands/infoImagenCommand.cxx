@@ -6,11 +6,11 @@ using namespace std;
 
 // SWITCH DE PRIMER ENTREGA
 
-bool valid = false;
+bool validinfoImagen = false;
 
 int dummyInfoImagen(vector<string> argv)
 {
-    if (valid)
+    if (validinfoImagen)
     {
         cout << "Imagen cargada en memoria: imagen_ejemplo.pgm, ancho: W, alto: H" << endl;
         return 0;

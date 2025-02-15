@@ -6,11 +6,11 @@ using namespace std;
 
 // SWITCH DE PRIMER ENTREGA
 
-bool valid = false;
+bool validDecodificarImagen = false;
 
 int dummyDecodificarArchivo(vector<string> argv)
 {
-    if (valid)
+    if (validDecodificarImagen)
     {
         cout << "El archivo nombre_archivo.huf ha sido decodificado exitosamente y almacenado en nombre_imagen.pgm" << endl;
         return 0;
