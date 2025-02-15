@@ -4,20 +4,23 @@
 
 using namespace std;
 
+// SWITCH DE PRIMER ENTREGA
+
+bool valid = false;
+
 int dummyInfoImagen(vector<string> argv)
 {
-    ifstream file;
-    file.exceptions ( ifstream::badbit );
-
-    try {
-        file.open(argv[1]);
+    if (valid)
+    {
+        cout << "Imagen cargada en memoria: imagen_ejemplo.pgm, ancho: W, alto: H" << endl;
+        return 0;
     }
-    catch (const ifstream::failure& e) {
-        cout << endl << "No se ha podido leer el archivo" << endl;
+    else
+    {
+        cout << "No hay imagen cargada en memoria" << endl;
+        return 1;
     }
 
-    file.close();
-    return 0;
 }
 
 Command CommandManager::infoImagenCommand = *(
@@ -25,5 +28,5 @@ Command CommandManager::infoImagenCommand = *(
                  1,
                  [](vector<string> args)
                  {
-                   return dummyInfoImagen(args);
+                     return dummyInfoImagen(args);
                  }}));

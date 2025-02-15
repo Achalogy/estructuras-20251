@@ -35,8 +35,8 @@ int dummyAyuda(vector<string> argv)
       cout << "    cargar_imagen [nombre_imagen.pgm]" << endl;
       cout << "USO: " << endl;
       cout << "     + Carga en memoria la imagen identificada por nombre_imagen.pgm. " << endl;
-      cout << "     + Solo es posible cargar una única imagen por sesión." << endl;
-      cout << "     + Si se ejecuta nuevamente con otro archivo, la nueva imagen reemplazará a la anterior." << endl
+      cout << "     + Solo es posible cargar una unica imagen por sesion." << endl;
+      cout << "     + Si se ejecuta nuevamente con otro archivo, la nueva imagen reemplazara a la anterior." << endl
            << endl;
       cout << "SALIDA: " << endl;
       cout << "     Exito: La imagen nombre_imagen.pgm ha sido cargada." << endl;
@@ -49,9 +49,9 @@ int dummyAyuda(vector<string> argv)
       cout << "SYNOPSIS:" << endl;
       cout << "    cargar_volumen [nombre_base] [n_im]" << endl;
       cout << "USO: " << endl;
-      cout << "     + Carga en memoria una serie ordenada de imágenes con el nombre base nombre_base y un tamaño de n_im imágenes." << endl;
-      cout << "     + Las imágenes de la serie deben estar nombradas como nombre_baseXX.pgm, donde XX es un número de dos dígitos indicando la posición en la serie." << endl;
-      cout << "     + Solo es posible cargar un único volumen por sesión; si se ejecuta nuevamente con otro nombre, el volumen anterior será reemplazado." << endl
+      cout << "     + Carga en memoria una serie ordenada de imagenes con el nombre base nombre_base y un tamaño de n_im imagenes." << endl;
+      cout << "     + Las imagenes de la serie deben estar nombradas como nombre_baseXX.pgm, donde XX es un numero de dos digitos indicando la posicion en la serie." << endl;
+      cout << "     + Solo es posible cargar un unico volumen por sesion; si se ejecuta nuevamente con otro nombre, el volumen anterior sera reemplazado." << endl
            << endl;
       cout << "SALIDA: " << endl;
       cout << "     Exito: El volumen nombre_base ha sido cargado." << endl;
@@ -64,7 +64,7 @@ int dummyAyuda(vector<string> argv)
       cout << "SYNOPSIS:" << endl;
       cout << "    info_imagen" << endl;
       cout << "USO: info_imagen" << endl;
-      cout << "     Muestra información básica de la imagen cargada en memoria." << endl
+      cout << "     Muestra informacion basica de la imagen cargada en memoria." << endl
            << endl;
       cout << "SALIDA: " << endl;
       cout << "     Exito: Imagen cargada en memoria: nombre_imagen.pgm, ancho: W, alto: H." << endl;
@@ -77,7 +77,7 @@ int dummyAyuda(vector<string> argv)
       cout << "SYNOPSIS:" << endl;
       cout << "    info_volumen" << endl;
       cout << "USO: info_volumen" << endl;
-      cout << "     Muestra información básica del volumen cargado en memoria." << endl
+      cout << "     Muestra informacion basica del volumen cargado en memoria." << endl
            << endl;
       cout << "SALIDA: " << endl;
       cout << "     Exito: Volumen cargado en memoria: nombre_base, tamaño: n_im, ancho: W, alto: H." << endl;
@@ -90,8 +90,8 @@ int dummyAyuda(vector<string> argv)
       cout << "SYNOPSIS:" << endl;
       cout << "    proyeccion2D [direccion] [criterio] [nombre_archivo.pgm]" << endl;
       cout << "USO: proyeccion2D direccion criterio nombre_archivo.pgm" << endl;
-      cout << "     Genera una imagen 2D a partir de la serie de imágenes cargada en memoria." << endl;
-      cout << "     La dirección puede ser:" << endl;
+      cout << "     Genera una imagen 2D a partir de la serie de imagenes cargada en memoria." << endl;
+      cout << "     La direccion puede ser:" << endl;
       cout << "         x: columnas" << endl;
       cout << "         y: filas" << endl;
       cout << "         z: profundidad" << endl;
@@ -105,10 +105,10 @@ int dummyAyuda(vector<string> argv)
            << endl;
 
       cout << "SALIDA: " << endl;
-      cout << "     Exito: La proyección 2D del volumen en memoria ha sido generada y almacenada en el archivo nombre_archivo.pgm." << endl;
+      cout << "     Exito: La proyeccion 2D del volumen en memoria ha sido generada y almacenada en el archivo nombre_archivo.pgm." << endl;
       cout << "     Error:" << endl;
       cout << "         El volumen no ha sido cargado en memoria." << endl;
-      cout << "         La proyección 2D no pudo ser generada." << endl
+      cout << "         La proyeccion 2D no pudo ser generada." << endl
            << endl;
     }
     else if (command == "codificar_imagen")
@@ -117,7 +117,7 @@ int dummyAyuda(vector<string> argv)
       cout << "SYNOPSIS:" << endl;
       cout << "    codificar_imagen [nombre_archivo.huf]" << endl;
       cout << "USO: codificar_imagen nombre_archivo.huf" << endl;
-      cout << "     Aplica codificación de Huffman a la imagen cargada en memoria y almacena el resultado en nombre_archivo.huf." << endl
+      cout << "     Aplica codificacion de Huffman a la imagen cargada en memoria y almacena el resultado en nombre_archivo.huf." << endl
            << endl;
       cout << "SALIDA: " << endl;
       cout << "     Exito: La imagen en memoria ha sido codificada y almacenada en nombre_archivo.huf." << endl;
@@ -143,7 +143,7 @@ int dummyAyuda(vector<string> argv)
       cout << "SYNOPSIS:" << endl;
       cout << "    segmentar [salida_imagen.pgm] [sx1 sy1 sl1] ..." << endl;
       cout << "USO: segmentar salida_imagen.pgm sx1 sy1 sl1 sx2 sy2 sl2 ..." << endl;
-      cout << "     Realiza la segmentación de la imagen cargada en memoria usando un conjunto de semillas." << endl;
+      cout << "     Realiza la segmentacion de la imagen cargada en memoria usando un conjunto de semillas." << endl;
       cout << "     Se pueden ingresar hasta 5 semillas en el comando." << endl;
       cout << "     La imagen segmentada se guarda en salida_imagen.pgm." << endl
            << endl;
@@ -152,7 +152,7 @@ int dummyAyuda(vector<string> argv)
       cout << "     Exito: La imagen en memoria fue segmentada correctamente y almacenada en salida_imagen.pgm." << endl;
       cout << "     Error:" << endl;
       cout << "         No hay imagen cargada en memoria." << endl;
-      cout << "         La segmentación no pudo ser realizada." << endl
+      cout << "         La segmentacion no pudo ser realizada." << endl
            << endl;
     }
     else

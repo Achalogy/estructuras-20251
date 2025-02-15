@@ -4,21 +4,25 @@
 
 using namespace std;
 
-int dummyCargarImagen(vector<string> argv) 
+int dummyCargarImagen(vector<string> argv)
 {
     ifstream file;
-    file.exceptions ( ifstream::badbit );
+    file.exceptions(ifstream::badbit);
 
-    try {
+    try
+    {
         file.open(argv[1]);
-    }
-    catch (const ifstream::failure& e) {
-        cout << endl << "No se ha podido leer el archivo" << endl;
-    }
 
-    file.close();
-
-    return 0;
+        cout << "La imagen " << argv[1] << " ha sido cargada" << endl;
+        file.close();
+        return 0;
+    }
+    catch (const ifstream::failure &e)
+    {
+        cout << "La imagen " << argv[1] << " no ha podido ser cargada" << endl;
+        file.close();
+        return 1;
+    }
 }
 
 Command CommandManager::cargarImagenCommand = *(
@@ -26,5 +30,5 @@ Command CommandManager::cargarImagenCommand = *(
                  2,
                  [](vector<string> args)
                  {
-                   return dummyCargarImagen(args);
+                     return dummyCargarImagen(args);
                  }}));

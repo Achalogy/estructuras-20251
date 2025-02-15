@@ -4,20 +4,23 @@
 
 using namespace std;
 
+// SWITCH DE PRIMER ENTREGA
+
+bool valid = false;
+
 int dummyProyeccion2D(vector<string> argv)
 {
-    ifstream file;
-    file.exceptions ( ifstream::badbit );
-
-    try {
-        file.open(argv[1]);
+    if (valid)
+    {
+        cout << "La proyeccion 2D del volumen en memoria ha sido generada y almacenada en el archivo nombre_archivo.pgm" << endl;
+            return 0;
     }
-    catch (const ifstream::failure& e) {
-        cout << endl << "No se ha podido leer el archivo" << endl;
+    else
+    {
+        cout << "El volumen no ha sido cargado en memoria" << endl;
+        cout << "La proyeccion 2D no pudo ser generada" << endl;
+        return 1;
     }
-
-    file.close();
-    return 0;
 }
 
 Command CommandManager::proyeccion2DCommand = *(

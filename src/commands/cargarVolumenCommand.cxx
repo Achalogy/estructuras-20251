@@ -6,19 +6,41 @@ using namespace std;
 
 int dummyCargarVolumen(vector<string> argv)
 {
-    ifstream file;
-    file.exceptions ( ifstream::badbit );
+    string nombre_base = argv[1];
+    int n = stoi(argv[2]);
 
-    try {
-        file.open(argv[1]);
+    bool valid = true;
+
+    for (int i = 1; i <= n && valid; i++)
+    {
+        string filename = nombre_base + to_string(i) + ".pgm";
+        ifstream file;
+        file.exceptions(ifstream::badbit);
+
+        try
+        {
+            file.open(filename);
+            cout << "El archivo " << filename << " ha sido cargado con exito" << endl;
+        }
+        catch (const ifstream::failure &e)
+        {
+            cout << "El archivo " << filename << " no ha podido ser cargado, finalizando carga" << endl;
+            valid = false;
+        }
+
+        file.close();
     }
-    catch (const ifstream::failure& e) {
-        cout << endl << "No se ha podido leer el archivo" << endl;
+
+    if (valid)
+    {
+        cout << "El volumen " << argv[1] << " ha sido cargado con exito" << endl;
+        return 0;
     }
-
-    file.close();
-
-    return 0;
+    else
+    {
+        cout << "El volumen " << argv[1] << " no ha podido ser cargado" << endl;
+        return 1;
+    }
 }
 
 Command CommandManager::cargarVolumenCommand = *(
@@ -26,5 +48,5 @@ Command CommandManager::cargarVolumenCommand = *(
                  3,
                  [](vector<string> args)
                  {
-                   return dummyCargarVolumen(args);
+                     return dummyCargarVolumen(args);
                  }}));

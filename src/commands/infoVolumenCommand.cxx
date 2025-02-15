@@ -4,20 +4,22 @@
 
 using namespace std;
 
+// SWITCH DE PRIMER ENTREGA
+
+bool valid = false;
+
 int dummyInfoVolumen(vector<string> argv)
 {
-    ifstream file;
-    file.exceptions ( ifstream::badbit );
-
-    try {
-        file.open(argv[1]);
+    if (valid)
+    {
+        cout << "Volumen cargado en memoria: nombre_base, tamaño: n_im, ancho: W, alto: H" << endl;
+        return 0;
     }
-    catch (const ifstream::failure& e) {
-        cout << endl << "No se ha podido leer el archivo" << endl;
+    else
+    {
+        cout << "No hay volumen cargado en memoria" << endl;
+        return 1;
     }
-
-    file.close();
-    return 0;
 }
 
 Command CommandManager::infoVolumenCommand = *(

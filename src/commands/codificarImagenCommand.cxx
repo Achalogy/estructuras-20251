@@ -4,20 +4,22 @@
 
 using namespace std;
 
+// SWITCH DE PRIMER ENTREGA
+
+bool valid = false;
+
 int dummyCodificarImagen(vector<string> argv)
 {
-    ifstream file;
-    file.exceptions ( ifstream::badbit );
-
-    try {
-        file.open(argv[1]);
+    if (valid)
+    {
+        cout << "La imagen en memoria ha sido codificada y almacenada en nombre_archivo.huf" << endl;
+        return 0;
     }
-    catch (const ifstream::failure& e) {
-        cout << endl << "No se ha podido leer el archivo" << endl;
+    else
+    {
+        cout << "No hay una imagen cargada en memoria" << endl;
+        return 1;
     }
-
-    file.close();
-    return 0;
 }
 
 Command CommandManager::codificarImagenCommand = *(

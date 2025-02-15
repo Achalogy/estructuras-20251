@@ -3,8 +3,23 @@
 
 using namespace std;
 
+// SWITCH DE PRIMER ENTREGA
+
+bool valid = false;
+
 int dummySegmentar(vector<string> argv)
 {
+  if (valid)
+  {
+    cout << "La imagen en memoria fue segmentada correctamente y almacenada en salida_imagen.pgm" << endl;
+    return 0;
+  }
+  else
+  {
+    cout << "No hay imagen cargada en memoria" << endl;
+    cout << "La segmentacion no pudo ser realizada" << endl;
+    return 1;
+  }
 
   return 0;
 }

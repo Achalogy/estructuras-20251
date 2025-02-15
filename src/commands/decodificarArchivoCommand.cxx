@@ -4,20 +4,22 @@
 
 using namespace std;
 
+// SWITCH DE PRIMER ENTREGA
+
+bool valid = false;
+
 int dummyDecodificarArchivo(vector<string> argv)
 {
-    ifstream file;
-    file.exceptions ( ifstream::badbit );
-
-    try {
-        file.open(argv[1]);
+    if (valid)
+    {
+        cout << "El archivo nombre_archivo.huf ha sido decodificado exitosamente y almacenado en nombre_imagen.pgm" << endl;
+        return 0;
     }
-    catch (const ifstream::failure& e) {
-        cout << endl << "No se ha podido leer el archivo" << endl;
+    else
+    {
+        cout << "El archivo nombre_archivo.huf no pudo ser decodificado" << endl;
+        return 1;
     }
-
-    file.close();
-    return 0;
 }
 
 Command CommandManager::decodificarArchivoCommand = *(
