@@ -1,0 +1,1 @@
+g++ $(find . -name "*.cxx") $(find . -name "*.cpp") -o proyecto.out; ./proyecto.out
