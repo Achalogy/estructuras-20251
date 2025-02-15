@@ -1,12 +1,19 @@
 #include <bits/stdc++.h>
 #include "commandManager.h"
+#include <fstream>
 
 using namespace std;
 
 int dummyCargarImagen(vector<string> argv)
 {
+    ifstream file;
 
-  return 0;
+    file.open(argv[1]);
+    if (!file)
+    {
+        return 1;
+    }
+    return 0;
 }
 
 Command CommandManager::cargarImagenCommand = *(
