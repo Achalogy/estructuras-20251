@@ -20,7 +20,7 @@ int dummyAyuda(vector<string> argv)
     cout << "info_volumen" << endl;
     cout << "proyeccion2D [direccion] [criterio] [nombre_archivo.pgm]" << endl;
     cout << "codificar_imagen [nombre_archivo.huf]" << endl;
-    cout << "decodificar_imagen [nombre_archivo.huf] [nombre_imagen.pgm]" << endl;
+    cout << "decodificar_archivo [nombre_archivo.huf] [nombre_imagen.pgm]" << endl;
     cout << "segmentar [imagen.pgm] [salida_imagen.pgm] [sx1 sy1 sl1] ..." << endl;
     cout << "salir" << endl;
   }
@@ -166,7 +166,7 @@ int dummyAyuda(vector<string> argv)
 
 Command CommandManager::ayudaCommand = *(
     new Command({"ayuda",
-                 2,
+                 1,
                  [](vector<string> args)
                  {
                    return dummyAyuda(args);

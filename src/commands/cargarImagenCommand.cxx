@@ -6,18 +6,15 @@ using namespace std;
 
 int dummyCargarImagen(vector<string> argv)
 {
-    ifstream file;
-    file.exceptions(ifstream::badbit);
+    ifstream file(argv[1]);
 
-    try
+    if (file.is_open())
     {
-        file.open(argv[1]);
-
         cout << "La imagen " << argv[1] << " ha sido cargada" << endl;
         file.close();
         return 0;
     }
-    catch (const ifstream::failure &e)
+    else
     {
         cout << "La imagen " << argv[1] << " no ha podido ser cargada" << endl;
         file.close();

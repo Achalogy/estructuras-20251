@@ -14,16 +14,12 @@ int dummyCargarVolumen(vector<string> argv)
     for (int i = 1; i <= n && validCargarVolumen; i++)
     {
         string filename = nombre_base + to_string(i) + ".pgm";
-        ifstream file;
-        file.exceptions(ifstream::badbit);
+        ifstream file(filename);
 
-        try
+        if(file.is_open())
         {
-            file.open(filename);
             cout << "El archivo " << filename << " ha sido cargado con exito" << endl;
-        }
-        catch (const ifstream::failure &e)
-        {
+        } else {
             cout << "El archivo " << filename << " no ha podido ser cargado, finalizando carga" << endl;
             validCargarVolumen = false;
         }
