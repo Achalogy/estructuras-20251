@@ -12,7 +12,7 @@ Imagen::Imagen(unsigned short r_ancho, unsigned short r_alto, unsigned short r_m
 
   // Verificar contenido
 
-  bool matriz_invalida = r_contenido.size() == r_alto;
+  bool matriz_invalida = r_contenido.size() != r_alto;
 
   for (std::vector<unsigned short> i : r_contenido)
   {
