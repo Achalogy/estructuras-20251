@@ -16,8 +16,8 @@
 class Imagen
 {
 private:
-  unsigned short ancho;          ///< Ancho de la imagen
-  unsigned short alto;           ///< Alto de la imagen
+  unsigned int ancho;          ///< Ancho de la imagen
+  unsigned int alto;           ///< Alto de la imagen
   unsigned short max_intensidad; ///< Maxima intensidad de iluminación en la imagen
 
   // Contenido de la imagen
@@ -31,19 +31,19 @@ public:
    * @param r_max_intensidad Maxima intesidad de iluminación en la imagen
    * @param r_contenido Matriz 2D que contiene la imagen, cada valor esta entre 0 y 255, representa que tan iluminado esta el pixel
    */
-  Imagen(unsigned short r_ancho, unsigned short r_alto, unsigned short r_max_intensidad, std::vector<std::vector<unsigned short>> r_contenido);
+  Imagen(unsigned int r_ancho, unsigned int r_alto, unsigned short r_max_intensidad, std::vector<std::vector<unsigned short>> r_contenido);
 
   /**
    * @brief Retorna el ancho de la imagen
    * @return Ancho de la imagen
    */
-  unsigned short getAncho();
+  unsigned int getAncho();
 
   /**
    * @brief Retorna el alto de la imagen
    * @return Alto de la imagen
    */
-  unsigned short getAlto();
+  unsigned int getAlto();
 
   /**
    * @brief Retorna la intensidad maxima de la imagen
