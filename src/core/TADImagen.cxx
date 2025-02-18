@@ -1,3 +1,8 @@
+/**
+ * @file TADImagen.cxx
+ * @brief Implementaciones de TADImagen.h
+ */
+
 #include <bits/stdc++.h>
 
 #include "TADImagen.h"

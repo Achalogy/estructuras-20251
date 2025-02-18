@@ -1,3 +1,13 @@
+/**
+ * @file commandManager.cxx
+ * @brief Implementaciones de commandManager.h
+ *
+ * Gestión de comandos para un sistema de procesamiento.
+ *
+ * Este archivo contiene la definición de las clases Command y CommandManager,
+ * que permiten la ejecución y administración de comandos dentro de un sistema.
+ */
+
 #include <bits/stdc++.h>
 #include "commandManager.h"
 
@@ -18,8 +28,9 @@ vector<string> CommandManager::getNextLine()
     cout << "Max Input Size Reached" << endl;
     return vector<string>();
   }
-  
-  if(line.size() == 0) {
+
+  if (line.size() == 0)
+  {
     return vector<string>();
   }
 
@@ -49,7 +60,8 @@ Command *CommandManager::encontrarComando(string name)
 
 int CommandManager::ejecutarComando(vector<string> argv)
 {
-  if(argv.size() == 0) return 0;
+  if (argv.size() == 0)
+    return 0;
   Command *command = this->encontrarComando(argv[0]);
 
   // Buscar comando
