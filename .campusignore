@@ -21,4 +21,7 @@ node_modules/*
 .vscode/*
 .build/*
 
+docs/html/*
+docs/latex/*
+
 .campusignore

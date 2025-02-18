@@ -34,3 +34,6 @@
 node_modules/
 .build/
 .vscode/
+
+docs/html
+docs/latex
