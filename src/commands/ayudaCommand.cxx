@@ -1,7 +1,28 @@
+/**
+ * @file ayudaCommand.cxx
+ * @brief Implementación del sistema de ayuda para los comandos disponibles.
+ *
+ * Este archivo contiene la implementación de la función `dummyAyuda`,
+ * que proporciona información sobre los comandos del programa.
+ */
+
 #include <bits/stdc++.h>
 #include "commandManager.h"
 
 using namespace std;
+
+/**
+ * @brief Muestra información sobre los comandos disponibles en el programa.
+ *
+ * Dependiendo de los argumentos, esta función imprime una lista general de comandos
+ * o una descripción detallada de un comando específico.
+ *
+ * @param argv Vector de strings que contiene los argumentos del usuario.
+ *        - `argv[0]`: Nombre del programa (ignorado).
+ *        - `argv[1]`: (Opcional) Nombre del comando para obtener más detalles.
+ *
+ * @return 0 si la ejecución fue exitosa.
+ */
 
 int dummyAyuda(vector<string> argv)
 {
@@ -164,6 +185,11 @@ int dummyAyuda(vector<string> argv)
   return 0;
 }
 
+/**
+ * @brief Define el comando `ayuda` en CommandManager.
+ *
+ * Asocia el comando `ayuda` con la función `dummyAyuda`.
+ */
 Command CommandManager::ayudaCommand = *(
     new Command({"ayuda",
                  1,
