@@ -16,8 +16,8 @@
 class Imagen
 {
 private:
-  unsigned int ancho;          ///< Ancho de la imagen
-  unsigned int alto;           ///< Alto de la imagen
+  unsigned int ancho;            ///< Ancho de la imagen
+  unsigned int alto;             ///< Alto de la imagen
   unsigned short max_intensidad; ///< Maxima intensidad de iluminación en la imagen
 
   // Contenido de la imagen
