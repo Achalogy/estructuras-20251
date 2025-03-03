@@ -6,7 +6,7 @@
 #include <bits/stdc++.h>
 
 #include "TADVolumen.h"
-#include "TADImagen.cxx"
+#include "TADImagen.h"
 
 Volumen::Volumen(std::vector<Imagen> r_imagenes)
 {
