@@ -4,7 +4,7 @@
  */
 
 #ifndef SISTEMA_H
-#define SISTEMA_h
+#define SISTEMA_H
 
 #include <bits/stdc++.h>
 
