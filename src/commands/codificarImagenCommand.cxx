@@ -8,7 +8,7 @@ using namespace std;
 
 bool validCodificarImagen = false;
 
-int dummyCodificarImagen(vector<string> argv)
+int handlerCodificarImagen(vector<string> argv)
 {
     if (validCodificarImagen)
     {
@@ -27,5 +27,5 @@ Command CommandManager::codificarImagenCommand = *(
                  2,
                  [](vector<string> args)
                  {
-                   return dummyCodificarImagen(args);
+                   return handlerCodificarImagen(args);
                  }}));

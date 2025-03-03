@@ -8,7 +8,7 @@ using namespace std;
 
 bool validProyeccion2D = false;
 
-int dummyProyeccion2D(vector<string> argv)
+int handlerProyeccion2D(vector<string> argv)
 {
     if (validProyeccion2D)
     {
@@ -28,5 +28,5 @@ Command CommandManager::proyeccion2DCommand = *(
                  4,
                  [](vector<string> args)
                  {
-                   return dummyProyeccion2D(args);
+                   return handlerProyeccion2D(args);
                  }}));

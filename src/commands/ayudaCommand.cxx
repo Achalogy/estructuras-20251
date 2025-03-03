@@ -2,7 +2,7 @@
  * @file ayudaCommand.cxx
  * @brief Implementación del sistema de ayuda para los comandos disponibles.
  *
- * Este archivo contiene la implementación de la función `dummyAyuda`,
+ * Este archivo contiene la implementación de la función `handlerAyuda`,
  * que proporciona información sobre los comandos del programa.
  */
 
@@ -24,7 +24,7 @@ using namespace std;
  * @return 0 si la ejecución fue exitosa.
  */
 
-int dummyAyuda(vector<string> argv)
+int handlerAyuda(vector<string> argv)
 {
 
   if (argv.size() == 1)
@@ -188,12 +188,12 @@ int dummyAyuda(vector<string> argv)
 /**
  * @brief Define el comando `ayuda` en CommandManager.
  *
- * Asocia el comando `ayuda` con la función `dummyAyuda`.
+ * Asocia el comando `ayuda` con la función `handlerAyuda`.
  */
 Command CommandManager::ayudaCommand = *(
     new Command({"ayuda",
                  1,
                  [](vector<string> args)
                  {
-                   return dummyAyuda(args);
+                   return handlerAyuda(args);
                  }}));

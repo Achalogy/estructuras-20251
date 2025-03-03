@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int dummyCargarImagen(vector<string> argv)
+int handlerCargarImagen(vector<string> argv)
 {
     ifstream file(argv[1]);
 
@@ -27,5 +27,5 @@ Command CommandManager::cargarImagenCommand = *(
                  2,
                  [](vector<string> args)
                  {
-                     return dummyCargarImagen(args);
+                     return handlerCargarImagen(args);
                  }}));

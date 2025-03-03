@@ -8,7 +8,7 @@ using namespace std;
 
 bool validDecodificarImagen = false;
 
-int dummyDecodificarArchivo(vector<string> argv)
+int handlerDecodificarArchivo(vector<string> argv)
 {
     if (validDecodificarImagen)
     {
@@ -27,5 +27,5 @@ Command CommandManager::decodificarArchivoCommand = *(
                  3,
                  [](vector<string> args)
                  {
-                   return dummyDecodificarArchivo(args);
+                   return handlerDecodificarArchivo(args);
                  }}));

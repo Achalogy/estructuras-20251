@@ -8,7 +8,7 @@ using namespace std;
 
 bool validinfoImagen = false;
 
-int dummyInfoImagen(vector<string> argv)
+int handlerInfoImagen(vector<string> argv)
 {
     if (validinfoImagen)
     {
@@ -28,5 +28,5 @@ Command CommandManager::infoImagenCommand = *(
                  1,
                  [](vector<string> args)
                  {
-                     return dummyInfoImagen(args);
+                     return handlerInfoImagen(args);
                  }}));

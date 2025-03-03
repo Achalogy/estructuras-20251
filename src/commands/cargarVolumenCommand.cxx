@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int dummyCargarVolumen(vector<string> argv)
+int handlerCargarVolumen(vector<string> argv)
 {
     string nombre_base = argv[1];
     int n = stoi(argv[2]);
@@ -44,5 +44,5 @@ Command CommandManager::cargarVolumenCommand = *(
                  3,
                  [](vector<string> args)
                  {
-                     return dummyCargarVolumen(args);
+                     return handlerCargarVolumen(args);
                  }}));
