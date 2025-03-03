@@ -4,7 +4,7 @@
  */
 
 #include <bits/stdc++.h>
-#include "commands/commandManager.h"
+#include "./core/Sistema.h"
 
 using namespace std;
 
@@ -20,15 +20,14 @@ using namespace std;
 
 int main()
 {
-  CommandManager *cm = new CommandManager();
+  Sistema sys;
   vector<string> argv;
 
   while(true)
   {
-    argv = cm->getNextLine();
+    argv = sys.getNextLine();
 
-    // cout << "Comando " << argv[0] << " ejecutado" << endl;
-    cm->ejecutarComando(argv);
+    sys.ejecutarComando(argv);
   }
 
   return 0;
