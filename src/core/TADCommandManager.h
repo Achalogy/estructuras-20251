@@ -12,6 +12,7 @@
 #include <bits/stdc++.h>
 
 #include "TADComando.h"
+#include "TADImagen.h"
 
 /**
  * @class CommandManager
@@ -52,7 +53,7 @@ public:
    * @param argv Lista de argumentos que representan el comando a ejecutar.
    * @return Código de retorno del comando ejecutado.
    */
-  int ejecutarComando(std::vector<std::string> argv);
+  int ejecutarComando(std::vector<std::string> argv, Imagen * imagenEnMemoria);
 
   /**
    * @brief Constructor de CommandManager. Inicializa los comandos disponibles.

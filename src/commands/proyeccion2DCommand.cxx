@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #include <fstream>
 #include "../core/TADCommandManager.h"
+#include "../core/TADImagen.h"
 
 using namespace std;
 
@@ -8,7 +9,7 @@ using namespace std;
 
 bool validProyeccion2D = false;
 
-int handlerProyeccion2D(vector<string> argv)
+int handlerProyeccion2D(vector<string> argv, Imagen *imagenEnMemoria)
 {
     if (validProyeccion2D)
     {
@@ -26,7 +27,7 @@ int handlerProyeccion2D(vector<string> argv)
 Comando CommandManager::proyeccion2DCommand = *(
     new Comando({"proyeccion2D",
                  4,
-                 [](vector<string> args)
+                 [](vector<string> args, Imagen * imagenEnMemoria)
                  {
-                     return handlerProyeccion2D(args);
+                     return handlerProyeccion2D(args, imagenEnMemoria);
                  }}));

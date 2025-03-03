@@ -58,7 +58,7 @@ Comando *CommandManager::encontrarComando(string name)
   return nullptr;
 }
 
-int CommandManager::ejecutarComando(vector<string> argv)
+int CommandManager::ejecutarComando(vector<string> argv, Imagen * imagenEnMemoria)
 {
   if (argv.size() == 0)
     return 0;
@@ -78,7 +78,7 @@ int CommandManager::ejecutarComando(vector<string> argv)
     return 1;
   }
 
-  int execCode = command->function(argv);
+  int execCode = command->function(argv, imagenEnMemoria);
 
   return execCode;
 }

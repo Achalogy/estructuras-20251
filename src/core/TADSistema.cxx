@@ -18,5 +18,5 @@ std::vector<std::string> Sistema::getNextLine()
 
 int Sistema::ejecutarComando(std::vector<std::string> argv)
 {
-  return cm.ejecutarComando(argv);
+  return cm.ejecutarComando(argv, imagenEnMemoria);
 }

@@ -1,10 +1,11 @@
 #include <bits/stdc++.h>
 #include <fstream>
 #include "../core/TADCommandManager.h"
+#include "../core/TADImagen.h"
 
 using namespace std;
 
-int handlerCargarImagen(vector<string> argv)
+int handlerCargarImagen(vector<string> argv, Imagen *imagenEnMemoria)
 {
     ifstream file(argv[1]);
 
@@ -25,7 +26,7 @@ int handlerCargarImagen(vector<string> argv)
 Comando CommandManager::cargarImagenCommand = *(
     new Comando({"cargar_imagen",
                  2,
-                 [](vector<string> args)
+                 [](vector<string> args, Imagen *imagenEnMemoria)
                  {
-                     return handlerCargarImagen(args);
+                     return handlerCargarImagen(args, imagenEnMemoria);
                  }}));

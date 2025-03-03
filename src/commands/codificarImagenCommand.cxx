@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #include <fstream>
 #include "../core/TADCommandManager.h"
+#include "../core/TADImagen.h"
 
 using namespace std;
 
@@ -8,7 +9,7 @@ using namespace std;
 
 bool validCodificarImagen = false;
 
-int handlerCodificarImagen(vector<string> argv)
+int handlerCodificarImagen(vector<string> argv, Imagen *imagenEnMemoria)
 {
     if (validCodificarImagen)
     {
@@ -25,7 +26,7 @@ int handlerCodificarImagen(vector<string> argv)
 Comando CommandManager::codificarImagenCommand = *(
     new Comando({"codificar_imagen",
                  2,
-                 [](vector<string> args)
+                 [](vector<string> args, Imagen *imagenEnMemoria)
                  {
-                     return handlerCodificarImagen(args);
+                     return handlerCodificarImagen(args, imagenEnMemoria);
                  }}));

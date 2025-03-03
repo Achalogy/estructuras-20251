@@ -8,6 +8,7 @@
 
 #include <bits/stdc++.h>
 #include "../core/TADCommandManager.h"
+#include "../core/TADImagen.h"
 
 using namespace std;
 
@@ -24,7 +25,7 @@ using namespace std;
  * @return 0 si la ejecución fue exitosa.
  */
 
-int handlerAyuda(vector<string> argv)
+int handlerAyuda(vector<string> argv, Imagen *imagenEnMemoria)
 {
 
   if (argv.size() == 1)
@@ -193,7 +194,7 @@ int handlerAyuda(vector<string> argv)
 Comando CommandManager::ayudaCommand = *(
     new Comando({"ayuda",
                  1,
-                 [](vector<string> args)
+                 [](vector<string> args, Imagen * imagenEnMemoria)
                  {
-                      return handlerAyuda(args);
+                      return handlerAyuda(args, imagenEnMemoria);
                  }}));

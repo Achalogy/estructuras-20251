@@ -1,10 +1,11 @@
 #include <bits/stdc++.h>
 #include <fstream>
 #include "../core/TADCommandManager.h"
+#include "../core/TADImagen.h"
 
 using namespace std;
 
-int handlerCargarVolumen(vector<string> argv)
+int handlerCargarVolumen(vector<string> argv, Imagen *imagenEnMemoria)
 {
     string nombre_base = argv[1];
     int n = stoi(argv[2]);
@@ -42,7 +43,7 @@ int handlerCargarVolumen(vector<string> argv)
 Comando CommandManager::cargarVolumenCommand = *(
     new Comando({"cargar_volumen",
                  3,
-                 [](vector<string> args)
+                 [](vector<string> args, Imagen *imagenEnMemoria)
                  {
-                     return handlerCargarVolumen(args);
+                     return handlerCargarVolumen(args, imagenEnMemoria);
                  }}));
