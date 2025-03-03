@@ -1,1 +1,1 @@
-g++ -I ./src -std=c++11 $(find . -name "*.cxx") main.cpp -o proyecto.out; ./proyecto.out
+rm -rf proyecto.out; g++ -I ./src -std=c++11 $(find . -name "*.cxx") src/main.cpp -o proyecto.out; ./proyecto.out
