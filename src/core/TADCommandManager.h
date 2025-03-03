@@ -1,13 +1,13 @@
 /**
- * @file commandManager.h
+ * @file TADCommandManager.h
  * @brief Gestión de comandos para un sistema de procesamiento.
  *
  * Este archivo contiene la definición de las clases Command y CommandManager,
  * que permiten la ejecución y administración de comandos dentro de un sistema.
  */
 
-#ifndef COMMANDMANAGER_H
-#define COMMANDMANAGER_H
+#ifndef TADCOMMANDMANAGER_H
+#define TADCOMMANDMANAGER_H
 
 #include <unordered_map>
 #include <iostream>

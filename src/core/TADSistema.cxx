@@ -1,11 +1,11 @@
 /**
- * @file Sistema.cxx
+ * @file TADSistema.cxx
  * @brief Implementación del TAD sistema Sistema.h
  */
 
 #include <bits/stdc++.h>
 
-#include "Sistema.h"
+#include "TADSistema.h"
 
 Sistema::Sistema() {
   imagenEnMemoria = nullptr;

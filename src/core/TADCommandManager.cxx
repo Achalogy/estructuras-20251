@@ -1,5 +1,5 @@
 /**
- * @file commandManager.cxx
+ * @file TADCommandManager.cxx
  * @brief Implementaciones de commandManager.h
  *
  * Gestión de comandos para un sistema de procesamiento.
@@ -9,7 +9,7 @@
  */
 
 #include <bits/stdc++.h>
-#include "commandManager.h"
+#include "TADCommandManager.h"
 
 using namespace std;
 

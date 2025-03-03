@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #include <fstream>
-#include "commandManager.h"
+#include "../core/TADCommandManager.h"
 
 using namespace std;
 

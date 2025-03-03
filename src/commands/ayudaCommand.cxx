@@ -7,7 +7,7 @@
  */
 
 #include <bits/stdc++.h>
-#include "commandManager.h"
+#include "../core/TADCommandManager.h"
 
 using namespace std;
 

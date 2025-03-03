@@ -1,5 +1,5 @@
 /**
- * @file Sistema.h
+ * @file TADSistema.h
  * @brief Definición del TAD Sistema
  */
 
@@ -9,7 +9,7 @@
 #include <bits/stdc++.h>
 
 #include "TADImagen.h"
-#include "../commands/commandManager.h"
+#include "TADCommandManager.h"
 
 /**
  * @class Sistema
