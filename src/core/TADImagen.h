@@ -2,11 +2,10 @@
  * @file TADImagen.h
  * @brief Definición de la clase Imagen
  */
+#include <bits/stdc++.h>
 
 #ifndef TADIMAGEN_H
 #define TADIMAGEN_H
-
-#include <bits/stdc++.h>
 
 /**
  * @class Imagen
