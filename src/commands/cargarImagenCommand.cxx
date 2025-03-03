@@ -22,8 +22,8 @@ int handlerCargarImagen(vector<string> argv)
     }
 }
 
-Command CommandManager::cargarImagenCommand = *(
-    new Command({"cargar_imagen",
+Comando CommandManager::cargarImagenCommand = *(
+    new Comando({"cargar_imagen",
                  2,
                  [](vector<string> args)
                  {

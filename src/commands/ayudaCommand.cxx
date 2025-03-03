@@ -190,10 +190,10 @@ int handlerAyuda(vector<string> argv)
  *
  * Asocia el comando `ayuda` con la función `handlerAyuda`.
  */
-Command CommandManager::ayudaCommand = *(
-    new Command({"ayuda",
+Comando CommandManager::ayudaCommand = *(
+    new Comando({"ayuda",
                  1,
                  [](vector<string> args)
                  {
-                   return handlerAyuda(args);
+                      return handlerAyuda(args);
                  }}));

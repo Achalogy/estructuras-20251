@@ -9,8 +9,8 @@ int handlerSalir(vector<string> argv)
   return 0;
 }
 
-Command CommandManager::salirCommand = *(
-    new Command({"salir",
+Comando CommandManager::salirCommand = *(
+    new Comando({"salir",
                  1,
                  [](vector<string> args)
                  {

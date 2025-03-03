@@ -23,8 +23,8 @@ int handlerInfoImagen(vector<string> argv)
 
 }
 
-Command CommandManager::infoImagenCommand = *(
-    new Command({"info_imagen",
+Comando CommandManager::infoImagenCommand = *(
+    new Comando({"info_imagen",
                  1,
                  [](vector<string> args)
                  {

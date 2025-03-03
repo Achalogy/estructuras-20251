@@ -39,8 +39,8 @@ int handlerCargarVolumen(vector<string> argv)
     }
 }
 
-Command CommandManager::cargarVolumenCommand = *(
-    new Command({"cargar_volumen",
+Comando CommandManager::cargarVolumenCommand = *(
+    new Comando({"cargar_volumen",
                  3,
                  [](vector<string> args)
                  {

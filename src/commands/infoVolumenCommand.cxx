@@ -22,10 +22,10 @@ int handlerInfoVolumen(vector<string> argv)
     }
 }
 
-Command CommandManager::infoVolumenCommand = *(
-    new Command({"info_volumen",
+Comando CommandManager::infoVolumenCommand = *(
+    new Comando({"info_volumen",
                  1,
                  [](vector<string> args)
                  {
-                   return handlerInfoVolumen(args);
+                     return handlerInfoVolumen(args);
                  }}));

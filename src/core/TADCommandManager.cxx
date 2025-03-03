@@ -46,9 +46,9 @@ vector<string> CommandManager::getNextLine()
   return argv;
 }
 
-Command *CommandManager::encontrarComando(string name)
+Comando *CommandManager::encontrarComando(string name)
 {
-  for (Command &c : this->comandos)
+  for (Comando &c : this->comandos)
   {
     if (c.name == name)
     {
@@ -62,7 +62,7 @@ int CommandManager::ejecutarComando(vector<string> argv)
 {
   if (argv.size() == 0)
     return 0;
-  Command *command = this->encontrarComando(argv[0]);
+  Comando *command = this->encontrarComando(argv[0]);
 
   // Buscar comando
 

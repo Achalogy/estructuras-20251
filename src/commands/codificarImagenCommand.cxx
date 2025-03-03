@@ -22,10 +22,10 @@ int handlerCodificarImagen(vector<string> argv)
     }
 }
 
-Command CommandManager::codificarImagenCommand = *(
-    new Command({"codificar_imagen",
+Comando CommandManager::codificarImagenCommand = *(
+    new Comando({"codificar_imagen",
                  2,
                  [](vector<string> args)
                  {
-                   return handlerCodificarImagen(args);
+                     return handlerCodificarImagen(args);
                  }}));

@@ -24,8 +24,8 @@ int handlerSegmentar(vector<string> argv)
   return 0;
 }
 
-Command CommandManager::segmentarCommand = *(
-    new Command({"segmentar",
+Comando CommandManager::segmentarCommand = *(
+    new Comando({"segmentar",
                  5,
                  [](vector<string> args)
                  {

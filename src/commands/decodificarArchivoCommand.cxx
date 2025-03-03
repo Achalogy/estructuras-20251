@@ -22,10 +22,10 @@ int handlerDecodificarArchivo(vector<string> argv)
     }
 }
 
-Command CommandManager::decodificarArchivoCommand = *(
-    new Command({"decodificar_archivo",
+Comando CommandManager::decodificarArchivoCommand = *(
+    new Comando({"decodificar_archivo",
                  3,
                  [](vector<string> args)
                  {
-                   return handlerDecodificarArchivo(args);
+                     return handlerDecodificarArchivo(args);
                  }}));

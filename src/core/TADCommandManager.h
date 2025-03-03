@@ -9,36 +9,9 @@
 #ifndef TADCOMMANDMANAGER_H
 #define TADCOMMANDMANAGER_H
 
-#include <unordered_map>
-#include <iostream>
-#include <vector>
-#include <functional>
+#include <bits/stdc++.h>
 
-/**
- * @class Command
- * @brief Representa un comando con su nombre, número mínimo de argumentos y su función asociada.
- */
-class Command
-{
-public:
-  std::string name;                                      ///< Nombre del comando
-  int minArgs;                                           ///< Número mínimo de argumentos requeridos
-  std::function<int(std::vector<std::string>)> function; ///< Función que ejecuta el comando
-
-public:
-  /**
-   * @brief Constructor parametrizado.
-   * @param n Nombre del comando
-   * @param nA Número mínimo de argumentos
-   * @param f Función asociada al comando
-   */
-  Command(std::string n, int nA, std::function<int(std::vector<std::string>)> f)
-  {
-    this->name = n;
-    this->minArgs = nA;
-    this->function = f;
-  }
-};
+#include "TADComando.h"
 
 /**
  * @class CommandManager
@@ -47,25 +20,25 @@ public:
 class CommandManager
 {
 private:
-  std::vector<Command> comandos; ///< Lista de comandos disponibles
+  std::vector<Comando> comandos; ///< Lista de comandos disponibles
 
   /**
    * @brief Encuentra un comando por su nombre.
    * @param name Nombre del comando a buscar.
    * @return Puntero al comando encontrado, o nullptr si no existe.
    */
-  Command *encontrarComando(std::string name);
+  Comando *encontrarComando(std::string name);
 
-  static Command salirCommand;              ///< Comando para salir del sistema
-  static Command ayudaCommand;              ///< Comando para mostrar ayuda
-  static Command cargarImagenCommand;       ///< Comando para cargar una imagen
-  static Command cargarVolumenCommand;      ///< Comando para cargar un volumen
-  static Command infoImagenCommand;         ///< Comando para obtener información de una imagen
-  static Command infoVolumenCommand;        ///< Comando para obtener información de un volumen
-  static Command proyeccion2DCommand;       ///< Comando para realizar proyecciones 2D
-  static Command codificarImagenCommand;    ///< Comando para codificar una imagen
-  static Command decodificarArchivoCommand; ///< Comando para decodificar un archivo
-  static Command segmentarCommand;          ///< Comando para segmentar una imagen o volumen
+  static Comando salirCommand;              ///< Comando para salir del sistema
+  static Comando ayudaCommand;              ///< Comando para mostrar ayuda
+  static Comando cargarImagenCommand;       ///< Comando para cargar una imagen
+  static Comando cargarVolumenCommand;      ///< Comando para cargar un volumen
+  static Comando infoImagenCommand;         ///< Comando para obtener información de una imagen
+  static Comando infoVolumenCommand;        ///< Comando para obtener información de un volumen
+  static Comando proyeccion2DCommand;       ///< Comando para realizar proyecciones 2D
+  static Comando codificarImagenCommand;    ///< Comando para codificar una imagen
+  static Comando decodificarArchivoCommand; ///< Comando para decodificar un archivo
+  static Comando segmentarCommand;          ///< Comando para segmentar una imagen o volumen
 
 public:
   /**

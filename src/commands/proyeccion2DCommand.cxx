@@ -23,10 +23,10 @@ int handlerProyeccion2D(vector<string> argv)
     }
 }
 
-Command CommandManager::proyeccion2DCommand = *(
-    new Command({"proyeccion2D",
+Comando CommandManager::proyeccion2DCommand = *(
+    new Comando({"proyeccion2D",
                  4,
                  [](vector<string> args)
                  {
-                   return handlerProyeccion2D(args);
+                     return handlerProyeccion2D(args);
                  }}));
