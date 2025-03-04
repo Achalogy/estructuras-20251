@@ -20,8 +20,9 @@ Volumen *leerVolumen(std::string baseName, int n_im)
     {
       Imagen *img = leerImagenPGM(filename);
 
-      if (imagenes.size() > 0 && (imagenes[0].getAlto() != img->getAlto()) || imagenes[0].getAncho() != img->getAncho())
-        throw std::runtime_error("La imagen leida tiene un tamaño diferente a las demas");
+      if (imagenes.size() > 0)
+        if (imagenes[0].getAlto() != img->getAlto() || imagenes[0].getAncho() != img->getAncho())
+          throw std::runtime_error("La imagen leida tiene un tamaño diferente a las demas");
 
       imagenes.push_back(*img);
     }
