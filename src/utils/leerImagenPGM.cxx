@@ -19,35 +19,44 @@ Imagen *leerImagenPGM(std::string path)
   int step = 1;
   std::vector<int> contenido;
 
-  while (!archivo.eof())
+  try
   {
-    std::string linea = leerLineaArchivo(archivo);
-
-    if (linea[0] == '#')
-      continue;
-
-    switch (step)
+    while (!archivo.eof())
     {
-    case 1:
-    {
-      if (linea != "P2")
-        throw std::runtime_error("La imagen esta en un formato invalido, no comienza con P2");
-      step = 2;
-      break;
-    }
+      std::string linea = leerLineaArchivo(archivo);
 
-    case 2:
-    {
-      std::vector<int> nums = getIntVectorFromStr(linea);
+      if (linea[0] == '#')
+        continue;
 
-      for (int i = 0; i < nums.size(); i++)
-        contenido.push_back(nums[i]);
-      break;
-    }
+      switch (step)
+      {
+      case 1:
+      {
+        if (linea != "P2")
+          throw std::runtime_error("La imagen esta en un formato invalido, no comienza con P2");
+        step = 2;
+        break;
+      }
 
-    default:
-      throw std::runtime_error("Algo salio mal leyendo el archivo");
+      case 2:
+      {
+        std::vector<int> nums = getIntVectorFromStr(linea);
+
+        for (int i = 0; i < nums.size(); i++)
+          contenido.push_back(nums[i]);
+        break;
+      }
+
+      default:
+        throw std::runtime_error("Algo salio mal leyendo el archivo");
+      }
     }
+    archivo.close();
+  }
+  catch (const std::exception &err)
+  {
+    archivo.close();
+    throw err;
   }
 
   if (contenido.size() < 3)
@@ -68,8 +77,8 @@ Imagen *leerImagenPGM(std::string path)
   for (int vi = 3; vi < contenido.size(); vi++)
   {
     int mi = vi - 3;
-    
-    if(mi >= (W * H))
+
+    if (mi >= (W * H))
       break;
 
     int i = floor(mi / W);
