@@ -38,6 +38,7 @@ Volumen *leerVolumen(std::string baseName, int n_im)
   }
 
   Volumen *v = new Volumen(
+      baseName,
       imagenes);
 
   return v;
