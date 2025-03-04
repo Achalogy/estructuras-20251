@@ -5,22 +5,21 @@
 
 using namespace std;
 
-// SWITCH DE PRIMER ENTREGA
-
-bool validInfoVolumen = false;
-
 int handlerInfoVolumen(vector<string> argv, Memoria &memoria)
 {
-    if (validInfoVolumen)
-    {
-        cout << "Volumen cargado en memoria: nombre_base, tamaño: n_im, ancho: W, alto: H" << endl;
-        return 0;
-    }
-    else
-    {
-        cout << "No hay volumen cargado en memoria" << endl;
-        return 1;
-    }
+  Volumen *vol = memoria.getVolumenEnMemoria();
+
+  if(vol == nullptr) {
+    cout << "No hay un volumen cargado en memoria" << endl;
+    return 0;
+  }
+
+  cout << "Volumen cargado en memoria: " << vol->getBaseName() << endl;
+  cout << "  Tamano: " << vol->getNumeroImagenes() << endl;
+  cout << "  Ancho:  " << vol->getAncho() << endl;
+  cout << "  Alto:   " << vol->getAltura() << endl;
+  
+  return 0;
 }
 
 Comando CommandManager::infoVolumenCommand = *(
@@ -28,5 +27,5 @@ Comando CommandManager::infoVolumenCommand = *(
                  1,
                  [](vector<string> args, Memoria &memoria)
                  {
-                     return handlerInfoVolumen(args, memoria);
+                   return handlerInfoVolumen(args, memoria);
                  }}));

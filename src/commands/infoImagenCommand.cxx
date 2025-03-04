@@ -16,7 +16,7 @@ int handlerInfoImagen(vector<string> argv, Memoria &memoria)
 
   cout << "Imagen cargada en memoria: " << img->getPath() << endl;
   cout << "  Ancho: " << img->getAncho() << endl;
-  cout << "  Alto: " << img->getAlto() << endl;
+  cout << "  Alto:  " << img->getAlto() << endl;
   
   return 0;
 }
