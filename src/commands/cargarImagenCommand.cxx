@@ -1,3 +1,8 @@
+/**
+ * @file cargarImagenCommand.cxx
+ * @brief Implementación del comando cargar_imagen
+ */
+
 #include <bits/stdc++.h>
 #include <fstream>
 #include "../core/TADCommandManager.h"
@@ -6,6 +11,14 @@
 
 using namespace std;
 
+/**
+ * @brief Usa la funcion leerImagenPGM para cargar la imagen pasada como argv[1] en el comando
+ * @param argv Vector de strings que contiene los argumentos del usuario.
+ *        - `argv[0]`: Nombre del programa (ignorado).
+ *        - `argv[1]`: (Obligatorio) Nombre del archivo con formato pgm a ser leido.
+ * @param memoria Memoria del sistema
+ * @return 0 si la ejecución fue exitosa
+ */
 int handlerCargarImagen(vector<string> argv, Memoria &memoria)
 {
   try

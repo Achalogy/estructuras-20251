@@ -1,3 +1,8 @@
+/**
+ * @file cargarVolumenCommand.cxx
+ * @brief Implementación del comando cargar_volumen
+ */
+
 #include <bits/stdc++.h>
 #include <fstream>
 #include "../core/TADCommandManager.h"
@@ -6,6 +11,15 @@
 
 using namespace std;
 
+/**
+ * @brief Usa la funcion leerVolumen para cargar la serie de imagenes con el baseName especificado por el usuario
+ * @param argv Vector de strings que contiene los argumentos del usuario.
+ *        - `argv[0]`: Nombre del programa (ignorado).
+ *        - `argv[1]`: (Obligatorio) baseName de los archivos a cargar como volumen.
+ *        - `argv[2]`: (Obligatorio) cantidad de imagenes que conformar el volumen a ser leido.
+ * @param memoria Memoria del sistema
+ * @return 0 si la ejecución fue exitosa
+ */
 int handlerCargarVolumen(vector<string> argv, Memoria &memoria)
 {
   char *endptr;

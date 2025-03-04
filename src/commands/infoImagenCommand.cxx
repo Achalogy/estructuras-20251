@@ -1,3 +1,8 @@
+/**
+ * @file infoImagenCommand.cxx
+ * @brief Implementación del comando info_imagen
+ */
+
 #include <bits/stdc++.h>
 #include <fstream>
 #include "../core/TADCommandManager.h"
@@ -5,6 +10,12 @@
 
 using namespace std;
 
+/**
+ * @brief Revisa si existe una imagen cargada en memoria, si es así muestra su información
+ * @param argv Vector de strings que contiene los argumentos del usuario. (Ignorado)
+ * @param memoria Memoria del sistema
+ * @return 0 si la ejecución fue exitosa
+ */
 int handlerInfoImagen(vector<string> argv, Memoria &memoria)
 {
   Imagen *img = memoria.getImagenEnMemoria();

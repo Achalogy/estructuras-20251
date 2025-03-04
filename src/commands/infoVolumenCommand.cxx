@@ -1,3 +1,8 @@
+/**
+ * @file infoVolumenCommand.cxx
+ * @brief Implementación del comando info_volumen
+ */
+
 #include <bits/stdc++.h>
 #include <fstream>
 #include "../core/TADCommandManager.h"
@@ -5,6 +10,12 @@
 
 using namespace std;
 
+/**
+ * @brief Revisa si existe un volumen cargado en memoria, si es así muestra su información
+ * @param argv Vector de strings que contiene los argumentos del usuario. (Ignorado)
+ * @param memoria Memoria del sistema
+ * @return 0 si la ejecución fue exitosa
+ */
 int handlerInfoVolumen(vector<string> argv, Memoria &memoria)
 {
   Volumen *vol = memoria.getVolumenEnMemoria();
