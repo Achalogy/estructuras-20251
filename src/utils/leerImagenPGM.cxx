@@ -63,6 +63,9 @@ Imagen *leerImagenPGM(std::string path)
   for (int vi = 3; vi < contenido.size(); vi++)
   {
     int mi = vi - 3;
+    
+    if(mi >= (W * H) - 1)
+      break;
 
     int i = floor(mi / W);
     int j = mi % W;
