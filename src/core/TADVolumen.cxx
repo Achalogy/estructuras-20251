@@ -44,3 +44,15 @@ unsigned int Volumen::getNumeroImagenes()
 {
   return n_im;
 }
+
+std::string Volumen::getBaseName() {
+  return baseName;
+}
+
+unsigned short Volumen::getAltura() {
+  return altura;
+}
+
+unsigned short Volumen::getAncho() {
+  return ancho;
+}
