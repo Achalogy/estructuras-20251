@@ -8,7 +8,7 @@
 #include "TADVolumen.h"
 #include "TADImagen.h"
 
-Volumen::Volumen(std::vector<Imagen> r_imagenes)
+Volumen::Volumen(std::string r_baseName, std::vector<Imagen> r_imagenes)
 {
   int r_n_im = r_imagenes.size();
 
@@ -17,6 +17,14 @@ Volumen::Volumen(std::vector<Imagen> r_imagenes)
 
   n_im = r_n_im;
   imagenes = r_imagenes;
+  baseName = r_baseName;
+  if(r_imagenes.size() > 0) {
+    altura = (unsigned short) r_imagenes[0].getAlto();
+    ancho = (unsigned short) r_imagenes[0].getAncho();
+  } else {
+    altura = 0;
+    ancho = 0;
+  }
 }
 
 std::vector<Imagen> Volumen::getImagenes()

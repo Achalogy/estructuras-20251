@@ -20,17 +20,18 @@ class Volumen
 private:
   std::vector<Imagen> imagenes; ///< Conjunto de imagenes del volumen
   unsigned int n_im;            ///< Numero de imagenes en el volumen
-  std::string baseName;         ///< Nombre base de las imagenes de volumen
-  unsigned int height;          ///< Altura de las imagenes del volumen
-  unsigned int width;           ///< Ancho de las imagenes del volumen
+  std::string baseName;         ///< Nombre base de las imagenes del volumen
+  unsigned short altura;          ///< Altura de las imagenes del volumen
+  unsigned short ancho;           ///< Ancho de las imagenes del volumen
 
 public:
   /**
    * @brief Constructor del volumen, revisa cada dato antes de crear un volumen
-   * @param imagenes Conjunto de imagenes del volumen
+   * @param r_imagenes Conjunto de imagenes del volumen
+   * @param r_baseName Nombre base de las imagenes del volumen
    * @throw out_of_range si la cantidad de imagenes es invalida
    */
-  Volumen(std::vector<Imagen> imagenes);
+  Volumen(std::string r_baseName, std::vector<Imagen> r_imagenes);
 
   /**
    * @brief Retorna el conjunto de imagenes del volumen
