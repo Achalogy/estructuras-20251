@@ -14,7 +14,7 @@ int handlerProyeccion2D(vector<string> argv, Memoria &memoria)
     if (validProyeccion2D)
     {
         cout << "La proyeccion 2D del volumen en memoria ha sido generada y almacenada en el archivo nombre_archivo.pgm" << endl;
-            return 0;
+        return 0;
     }
     else
     {
