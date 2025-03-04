@@ -2,42 +2,33 @@
 #include <fstream>
 #include "../core/TADCommandManager.h"
 #include "../core/TADImagen.h"
+#include "../utils/leerVolumen.h"
 
 using namespace std;
 
 int handlerCargarVolumen(vector<string> argv, Memoria memoria)
 {
-    string nombre_base = argv[1];
-    int n = stoi(argv[2]);
+  char *endptr;
+  long n_im = std::strtol(argv[2].c_str(), &endptr, 10);
 
-    bool validCargarVolumen = true;
+  try
+  {
+    if (*endptr != '\0')
+      throw std::runtime_error("Formato invalido para la cantidad de imagenes");
 
-    for (int i = 1; i <= n && validCargarVolumen; i++)
-    {
-        string filename = nombre_base + to_string(i) + ".pgm";
-        ifstream file(filename);
+    Volumen *volumen = leerVolumen(argv[1], (int)n_im);
 
-        if(file.is_open())
-        {
-            cout << "El archivo " << filename << " ha sido cargado con exito" << endl;
-        } else {
-            cout << "El archivo " << filename << " no ha podido ser cargado, finalizando carga" << endl;
-            validCargarVolumen = false;
-        }
+    memoria.setVolumenEnMemoria(volumen);
 
-        file.close();
-    }
+    cout << "Se ha finalizado la cargar del volumen " << argv[1] << endl;
 
-    if (validCargarVolumen)
-    {
-        cout << "El volumen " << argv[1] << " ha sido cargado con exito" << endl;
-        return 0;
-    }
-    else
-    {
-        cout << "El volumen " << argv[1] << " no ha podido ser cargado" << endl;
-        return 1;
-    }
+    return 0;
+  }
+  catch (const std::exception &err)
+  {
+    std::cerr << "ERROR cargando volumen " << argv[1] << ": " << err.what() << std::endl;
+    return 1;
+  }
 }
 
 Comando CommandManager::cargarVolumenCommand = *(
@@ -45,5 +36,5 @@ Comando CommandManager::cargarVolumenCommand = *(
                  3,
                  [](vector<string> args, Memoria memoria)
                  {
-                     return handlerCargarVolumen(args, memoria);
+                   return handlerCargarVolumen(args, memoria);
                  }}));
