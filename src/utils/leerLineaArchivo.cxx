@@ -1,3 +1,8 @@
+/**
+ * @file leerLineaArchivo.cxx
+ * @brief Implementacion de leerLineaArchivo.h
+ */
+
 #include<bits/stdc++.h>
 
 std::string leerLineaArchivo(std::ifstream &archivo)

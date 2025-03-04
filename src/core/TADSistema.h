@@ -19,11 +19,10 @@
 class Sistema
 {
 private:
-  Memoria memoria;
-  CommandManager cm;
+  Memoria memoria;   ///< Objeto de memoria, este contiene la imagen y volumen cargados
+  CommandManager cm; ///< Objeto de Command Manager, se encarga de la ejecución y lectura de comandos
 
 public:
-
   /**
    * @brief Obtiene la siguiente línea de entrada del usuario.
    * @return Vector con los argumentos de la línea ingresada.

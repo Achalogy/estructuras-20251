@@ -1,6 +1,6 @@
 /**
  * @file TADSistema.cxx
- * @brief Implementación del TAD sistema Sistema.h
+ * @brief Implementaciones de TADSistema.h
  */
 
 #include <bits/stdc++.h>

@@ -1,3 +1,8 @@
+/**
+ * @file getIntVectorFromStr.cxx
+ * @brief Implementacion de getIntVectorFromStr.h
+ */
+
 #include<bits/stdc++.h>
 
 std::vector<int> getIntVectorFromStr(std::string linea) {

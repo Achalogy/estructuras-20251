@@ -1,3 +1,8 @@
+/**
+ * @file leerImagenPGM.cxx
+ * @brief Implementacion de leerImagenPGM.h
+ */
+
 #include <bits/stdc++.h>
 
 #include "../core/TADImagen.h"

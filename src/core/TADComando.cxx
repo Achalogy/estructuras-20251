@@ -1,3 +1,8 @@
+/**
+ * @file TADComando.cxx
+ * @brief Implementaciones de TADComando.h
+ */
+
 #include<bits/stdc++.h>
 
 #include "TADComando.h"

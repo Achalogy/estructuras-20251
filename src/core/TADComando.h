@@ -18,8 +18,8 @@
 class Comando
 {
 public:
-  std::string name;                                                                ///< Nombre del comando
-  int minArgs;                                                                     ///< Número mínimo de argumentos requeridos
+  std::string name;                                                       ///< Nombre del comando
+  int minArgs;                                                            ///< Número mínimo de argumentos requeridos
   std::function<int(std::vector<std::string>, Memoria memoria)> function; ///< Función que ejecuta el comando
 
 public:
