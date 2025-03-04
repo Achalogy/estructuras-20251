@@ -19,7 +19,7 @@ int handlerCargarImagen(vector<string> argv, Memoria memoria)
   }
   catch (const std::exception& err)
   {
-    std::cerr << "ERROR: " << err.what() << endl;
+    std::cerr << "ERROR " << argv[1] << ": " << err.what() << endl;
     return 1;
   }
 }
