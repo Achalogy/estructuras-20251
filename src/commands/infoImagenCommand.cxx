@@ -9,8 +9,6 @@ int handlerInfoImagen(vector<string> argv, Memoria &memoria)
 {
   Imagen *img = memoria.getImagenEnMemoria();
 
-  cout << img << endl;
-
   if (img == nullptr) {
     cout << "No hay una imagen cargada en memoria" << endl;
     return 0;
