@@ -10,6 +10,7 @@
 
 #include <bits/stdc++.h>
 #include "TADCommandManager.h"
+#include "TADMemoria.h"
 
 using namespace std;
 
@@ -58,7 +59,7 @@ Comando *CommandManager::encontrarComando(string name)
   return nullptr;
 }
 
-int CommandManager::ejecutarComando(vector<string> argv, Imagen * imagenEnMemoria)
+int CommandManager::ejecutarComando(vector<string> argv, Memoria memoria)
 {
   if (argv.size() == 0)
     return 0;
@@ -78,7 +79,7 @@ int CommandManager::ejecutarComando(vector<string> argv, Imagen * imagenEnMemori
     return 1;
   }
 
-  int execCode = command->function(argv, imagenEnMemoria);
+  int execCode = command->function(argv, memoria);
 
   return execCode;
 }

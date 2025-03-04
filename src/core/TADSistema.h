@@ -8,7 +8,7 @@
 
 #include <bits/stdc++.h>
 
-#include "TADImagen.h"
+#include "TADMemoria.h"
 #include "TADCommandManager.h"
 
 /**
@@ -19,14 +19,10 @@
 class Sistema
 {
 private:
-  Imagen *imagenEnMemoria;
+  Memoria memoria;
   CommandManager cm;
 
 public:
-  /**
-   * @brief Constructor del sistema
-   */
-  Sistema();
 
   /**
    * @brief Obtiene la siguiente línea de entrada del usuario.

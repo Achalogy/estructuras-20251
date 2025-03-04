@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int handlerCargarImagen(vector<string> argv, Imagen *imagenEnMemoria)
+int handlerCargarImagen(vector<string> argv, Memoria memoria)
 {
     ifstream file(argv[1]);
 
@@ -26,7 +26,7 @@ int handlerCargarImagen(vector<string> argv, Imagen *imagenEnMemoria)
 Comando CommandManager::cargarImagenCommand = *(
     new Comando({"cargar_imagen",
                  2,
-                 [](vector<string> args, Imagen *imagenEnMemoria)
+                 [](vector<string> args, Memoria memoria)
                  {
-                     return handlerCargarImagen(args, imagenEnMemoria);
+                     return handlerCargarImagen(args, memoria);
                  }}));

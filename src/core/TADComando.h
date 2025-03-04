@@ -3,7 +3,7 @@
  * @brief Guarda el nombre del comando, la cantidad minima de argumentos y su función
  */
 
-#include "TADImagen.h"
+#include "TADMemoria.h"
 
 #ifndef TADCOMANDO_H
 #define TADCOMANDO_H
@@ -20,7 +20,7 @@ class Comando
 public:
   std::string name;                                                                ///< Nombre del comando
   int minArgs;                                                                     ///< Número mínimo de argumentos requeridos
-  std::function<int(std::vector<std::string>, Imagen * imagenEnMemoria)> function; ///< Función que ejecuta el comando
+  std::function<int(std::vector<std::string>, Memoria memoria)> function; ///< Función que ejecuta el comando
 
 public:
   /**
@@ -29,7 +29,7 @@ public:
    * @param nA Número mínimo de argumentos
    * @param f Función asociada al comando
    */
-  Comando(std::string n, int nA, std::function<int(std::vector<std::string>, Imagen *imagenEnMemoria)> f);
+  Comando(std::string n, int nA, std::function<int(std::vector<std::string>, Memoria memoria)> f);
 };
 
 #endif

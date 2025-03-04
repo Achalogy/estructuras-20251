@@ -7,10 +7,6 @@
 
 #include "TADSistema.h"
 
-Sistema::Sistema() {
-  imagenEnMemoria = nullptr;
-};
-
 std::vector<std::string> Sistema::getNextLine()
 {
   return cm.getNextLine();
@@ -18,5 +14,5 @@ std::vector<std::string> Sistema::getNextLine()
 
 int Sistema::ejecutarComando(std::vector<std::string> argv)
 {
-  return cm.ejecutarComando(argv, imagenEnMemoria);
+  return cm.ejecutarComando(argv, memoria);
 }

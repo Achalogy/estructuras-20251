@@ -9,7 +9,7 @@ using namespace std;
 
 bool validDecodificarImagen = false;
 
-int handlerDecodificarArchivo(vector<string> argv, Imagen * imagenEnMemoria)
+int handlerDecodificarArchivo(vector<string> argv, Memoria memoria)
 {
     if (validDecodificarImagen)
     {
@@ -26,7 +26,7 @@ int handlerDecodificarArchivo(vector<string> argv, Imagen * imagenEnMemoria)
 Comando CommandManager::decodificarArchivoCommand = *(
     new Comando({"decodificar_archivo",
                  3,
-                 [](vector<string> args, Imagen * imagenEnMemoria)
+                 [](vector<string> args, Memoria memoria)
                  {
-                     return handlerDecodificarArchivo(args, imagenEnMemoria);
+                     return handlerDecodificarArchivo(args, memoria);
                  }}));

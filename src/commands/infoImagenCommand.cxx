@@ -9,7 +9,7 @@ using namespace std;
 
 bool validinfoImagen = false;
 
-int handlerInfoImagen(vector<string> argv, Imagen *imagenEnMemoria)
+int handlerInfoImagen(vector<string> argv, Memoria memoria)
 {
     if (validinfoImagen)
     {
@@ -27,7 +27,7 @@ int handlerInfoImagen(vector<string> argv, Imagen *imagenEnMemoria)
 Comando CommandManager::infoImagenCommand = *(
     new Comando({"info_imagen",
                  1,
-                 [](vector<string> args, Imagen *imagenEnMemoria)
+                 [](vector<string> args, Memoria memoria)
                  {
-                     return handlerInfoImagen(args, imagenEnMemoria);
+                     return handlerInfoImagen(args, memoria);
                  }}));

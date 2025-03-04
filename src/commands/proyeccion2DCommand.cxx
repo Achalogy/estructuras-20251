@@ -9,7 +9,7 @@ using namespace std;
 
 bool validProyeccion2D = false;
 
-int handlerProyeccion2D(vector<string> argv, Imagen *imagenEnMemoria)
+int handlerProyeccion2D(vector<string> argv, Memoria memoria)
 {
     if (validProyeccion2D)
     {
@@ -27,7 +27,7 @@ int handlerProyeccion2D(vector<string> argv, Imagen *imagenEnMemoria)
 Comando CommandManager::proyeccion2DCommand = *(
     new Comando({"proyeccion2D",
                  4,
-                 [](vector<string> args, Imagen * imagenEnMemoria)
+                 [](vector<string> args, Memoria memoria)
                  {
-                     return handlerProyeccion2D(args, imagenEnMemoria);
+                     return handlerProyeccion2D(args, memoria);
                  }}));

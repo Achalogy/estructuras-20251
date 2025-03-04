@@ -9,7 +9,7 @@ using namespace std;
 
 bool validCodificarImagen = false;
 
-int handlerCodificarImagen(vector<string> argv, Imagen *imagenEnMemoria)
+int handlerCodificarImagen(vector<string> argv, Memoria memoria)
 {
     if (validCodificarImagen)
     {
@@ -26,7 +26,7 @@ int handlerCodificarImagen(vector<string> argv, Imagen *imagenEnMemoria)
 Comando CommandManager::codificarImagenCommand = *(
     new Comando({"codificar_imagen",
                  2,
-                 [](vector<string> args, Imagen *imagenEnMemoria)
+                 [](vector<string> args, Memoria memoria)
                  {
-                     return handlerCodificarImagen(args, imagenEnMemoria);
+                     return handlerCodificarImagen(args, memoria);
                  }}));

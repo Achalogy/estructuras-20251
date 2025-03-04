@@ -8,7 +8,7 @@ using namespace std;
 
 bool validSegmentar = false;
 
-int handlerSegmentar(vector<string> argv, Imagen * imagenEnMemoria)
+int handlerSegmentar(vector<string> argv, Memoria memoria)
 {
   if (validSegmentar)
   {
@@ -28,7 +28,7 @@ int handlerSegmentar(vector<string> argv, Imagen * imagenEnMemoria)
 Comando CommandManager::segmentarCommand = *(
     new Comando({"segmentar",
                  5,
-                 [](vector<string> args, Imagen *imagenEnMemoria)
+                 [](vector<string> args, Memoria memoria)
                  {
-                   return handlerSegmentar(args, imagenEnMemoria);
+                   return handlerSegmentar(args, memoria);
                  }}));
