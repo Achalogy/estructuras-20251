@@ -7,7 +7,7 @@
 
 #include "TADImagen.h"
 
-Imagen::Imagen(unsigned int r_ancho, unsigned int r_alto, unsigned short r_max_intensidad, std::vector<std::vector<unsigned short>> r_contenido)
+Imagen::Imagen(std::string r_path, unsigned int r_ancho, unsigned int r_alto, unsigned short r_max_intensidad, std::vector<std::vector<unsigned short>> r_contenido)
 {
   // Verificar valores
   if (r_ancho < 0 || r_alto < 0)
@@ -33,24 +33,28 @@ Imagen::Imagen(unsigned int r_ancho, unsigned int r_alto, unsigned short r_max_i
 
   // Datos verificados
 
-  this->ancho = r_ancho;
-  this->alto = r_alto;
-  this->contenido = r_contenido;
+  ancho = r_ancho;
+  alto = r_alto;
+  contenido = r_contenido;
+  path = r_path;
 }
 
 unsigned int Imagen::getAlto()
 {
-  return this->alto;
+  return alto;
 }
 unsigned int Imagen::getAncho()
 {
-  return this->ancho;
+  return ancho;
 }
 unsigned short Imagen::getMaxIntensidad()
 {
-  return this->max_intensidad;
+  return max_intensidad;
 }
 std::vector<std::vector<unsigned short>> Imagen::getContenido()
 {
-  return this->contenido;
+  return contenido;
+}
+std::string Imagen::getPath() {
+  return path;
 }

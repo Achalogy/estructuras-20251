@@ -86,7 +86,7 @@ Imagen *leerImagenPGM(std::string path)
     mContenido[i][j] = pixel;
   }
 
-  Imagen *imagen = new Imagen((unsigned int)W, (unsigned int)H, (unsigned short)M, mContenido);
+  Imagen *imagen = new Imagen(path, (unsigned int)W, (unsigned int)H, (unsigned short)M, mContenido);
 
   return imagen;
 }
