@@ -2,25 +2,26 @@
 #include <fstream>
 #include "../core/TADCommandManager.h"
 #include "../core/TADImagen.h"
+#include "../utils/leerImagenPGM.h"
 
 using namespace std;
 
 int handlerCargarImagen(vector<string> argv, Memoria memoria)
 {
-    ifstream file(argv[1]);
+  try
+  {
+    Imagen *imagen = leerImagenPGM(argv[1]);
+    memoria.setImagenEnMemoria(imagen);
 
-    if (file.is_open())
-    {
-        cout << "La imagen " << argv[1] << " ha sido cargada" << endl;
-        file.close();
-        return 0;
-    }
-    else
-    {
-        cout << "La imagen " << argv[1] << " no ha podido ser cargada" << endl;
-        file.close();
-        return 1;
-    }
+    cout << "Se ha finalizado la carga del archivo " << argv[1] << endl;
+
+    return 0;
+  }
+  catch (const std::exception& err)
+  {
+    std::cerr << "ERROR: " << err.what() << endl;
+    return 1;
+  }
 }
 
 Comando CommandManager::cargarImagenCommand = *(
@@ -28,5 +29,5 @@ Comando CommandManager::cargarImagenCommand = *(
                  2,
                  [](vector<string> args, Memoria memoria)
                  {
-                     return handlerCargarImagen(args, memoria);
+                   return handlerCargarImagen(args, memoria);
                  }}));
