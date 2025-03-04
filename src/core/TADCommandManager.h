@@ -60,16 +60,16 @@ public:
    */
   CommandManager()
   {
-    this->comandos.push_back(salirCommand);
-    this->comandos.push_back(ayudaCommand);
-    this->comandos.push_back(cargarImagenCommand);
-    this->comandos.push_back(cargarVolumenCommand);
-    this->comandos.push_back(infoImagenCommand);
-    this->comandos.push_back(infoVolumenCommand);
-    this->comandos.push_back(proyeccion2DCommand);
-    this->comandos.push_back(codificarImagenCommand);
-    this->comandos.push_back(decodificarArchivoCommand);
-    this->comandos.push_back(segmentarCommand);
+    comandos.push_back(salirCommand);
+    comandos.push_back(ayudaCommand);
+    comandos.push_back(cargarImagenCommand);
+    comandos.push_back(cargarVolumenCommand);
+    comandos.push_back(infoImagenCommand);
+    comandos.push_back(infoVolumenCommand);
+    comandos.push_back(proyeccion2DCommand);
+    comandos.push_back(codificarImagenCommand);
+    comandos.push_back(decodificarArchivoCommand);
+    comandos.push_back(segmentarCommand);
   }
 };
 

@@ -18,8 +18,7 @@ private:
   unsigned int ancho;            ///< Ancho de la imagen
   unsigned int alto;             ///< Alto de la imagen
   unsigned short max_intensidad; ///< Maxima intensidad de iluminación en la imagen
-
-  std::string path; ///< Ubicación de la imagen cargada
+  std::string path;              ///< Ubicación de la imagen cargada
 
   // Contenido de la imagen
   std::vector<std::vector<unsigned short>> contenido; ///< Matriz 2D que contiene la imagen, cada valor esta entre 0 y 255, representa que tan iluminado esta el pixel
