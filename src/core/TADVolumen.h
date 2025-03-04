@@ -20,6 +20,9 @@ class Volumen
 private:
   std::vector<Imagen> imagenes; ///< Conjunto de imagenes del volumen
   unsigned int n_im;            ///< Numero de imagenes en el volumen
+  std::string baseName;         ///< Nombre base de las imagenes de volumen
+  unsigned int height;          ///< Altura de las imagenes del volumen
+  unsigned int width;           ///< Ancho de las imagenes del volumen
 
 public:
   /**
@@ -47,6 +50,24 @@ public:
    * @return Numero de imagenes del volumen
    */
   unsigned int getNumeroImagenes();
+
+  /**
+   * @brief Retorna el base name del volumen
+   * @return baseName del volumen
+   */
+  std::string getBaseName();
+
+  /**
+   * @brief Retorna la altura de las imagenes
+   * @return altura de las imagenes
+   */
+  unsigned short getAltura();
+
+  /**
+   * @brief Retorna el ancho de las imagenes
+   * @return ancho de las imagenes
+   */
+  unsigned short getAncho();
 };
 
 #endif
