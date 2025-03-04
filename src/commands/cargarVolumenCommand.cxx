@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int handlerCargarVolumen(vector<string> argv, Memoria memoria)
+int handlerCargarVolumen(vector<string> argv, Memoria &memoria)
 {
   char *endptr;
   long n_im = std::strtol(argv[2].c_str(), &endptr, 10);
@@ -34,7 +34,7 @@ int handlerCargarVolumen(vector<string> argv, Memoria memoria)
 Comando CommandManager::cargarVolumenCommand = *(
     new Comando({"cargar_volumen",
                  3,
-                 [](vector<string> args, Memoria memoria)
+                 [](vector<string> args, Memoria &memoria)
                  {
                    return handlerCargarVolumen(args, memoria);
                  }}));

@@ -5,29 +5,28 @@
 
 using namespace std;
 
-// SWITCH DE PRIMER ENTREGA
-
-bool validinfoImagen = false;
-
-int handlerInfoImagen(vector<string> argv, Memoria memoria)
+int handlerInfoImagen(vector<string> argv, Memoria &memoria)
 {
-    if (validinfoImagen)
-    {
-        cout << "Imagen cargada en memoria: imagen_ejemplo.pgm, ancho: W, alto: H" << endl;
-        return 0;
-    }
-    else
-    {
-        cout << "No hay imagen cargada en memoria" << endl;
-        return 1;
-    }
+  Imagen *img = memoria.getImagenEnMemoria();
 
+  cout << img << endl;
+
+  if (img == nullptr) {
+    cout << "No hay una imagen cargada en memoria" << endl;
+    return 0;
+  }
+
+  cout << "Imagen cargada en memoria: " << img->getPath() << endl;
+  cout << "  Ancho: " << img->getAncho() << endl;
+  cout << "  Alto: " << img->getAlto() << endl;
+  
+  return 0;
 }
 
 Comando CommandManager::infoImagenCommand = *(
     new Comando({"info_imagen",
                  1,
-                 [](vector<string> args, Memoria memoria)
+                 [](vector<string> args, Memoria &memoria)
                  {
-                     return handlerInfoImagen(args, memoria);
+                   return handlerInfoImagen(args, memoria);
                  }}));

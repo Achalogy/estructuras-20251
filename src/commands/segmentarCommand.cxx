@@ -8,7 +8,7 @@ using namespace std;
 
 bool validSegmentar = false;
 
-int handlerSegmentar(vector<string> argv, Memoria memoria)
+int handlerSegmentar(vector<string> argv, Memoria &memoria)
 {
   if (validSegmentar)
   {
@@ -28,7 +28,7 @@ int handlerSegmentar(vector<string> argv, Memoria memoria)
 Comando CommandManager::segmentarCommand = *(
     new Comando({"segmentar",
                  5,
-                 [](vector<string> args, Memoria memoria)
+                 [](vector<string> args, Memoria &memoria)
                  {
                    return handlerSegmentar(args, memoria);
                  }}));

@@ -25,7 +25,7 @@ using namespace std;
  * @return 0 si la ejecución fue exitosa.
  */
 
-int handlerAyuda(vector<string> argv, Memoria memoria)
+int handlerAyuda(vector<string> argv, Memoria &memoria)
 {
 
   if (argv.size() == 1)
@@ -194,7 +194,7 @@ int handlerAyuda(vector<string> argv, Memoria memoria)
 Comando CommandManager::ayudaCommand = *(
     new Comando({"ayuda",
                  1,
-                 [](vector<string> args, Memoria memoria)
+                 [](vector<string> args, Memoria &memoria)
                  {
                       return handlerAyuda(args, memoria);
                  }}));

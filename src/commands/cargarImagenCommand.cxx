@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int handlerCargarImagen(vector<string> argv, Memoria memoria)
+int handlerCargarImagen(vector<string> argv, Memoria &memoria)
 {
   try
   {
@@ -27,7 +27,7 @@ int handlerCargarImagen(vector<string> argv, Memoria memoria)
 Comando CommandManager::cargarImagenCommand = *(
     new Comando({"cargar_imagen",
                  2,
-                 [](vector<string> args, Memoria memoria)
+                 [](vector<string> args, Memoria &memoria)
                  {
                    return handlerCargarImagen(args, memoria);
                  }}));

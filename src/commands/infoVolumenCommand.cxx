@@ -9,7 +9,7 @@ using namespace std;
 
 bool validInfoVolumen = false;
 
-int handlerInfoVolumen(vector<string> argv, Memoria memoria)
+int handlerInfoVolumen(vector<string> argv, Memoria &memoria)
 {
     if (validInfoVolumen)
     {
@@ -26,7 +26,7 @@ int handlerInfoVolumen(vector<string> argv, Memoria memoria)
 Comando CommandManager::infoVolumenCommand = *(
     new Comando({"info_volumen",
                  1,
-                 [](vector<string> args, Memoria memoria)
+                 [](vector<string> args, Memoria &memoria)
                  {
                      return handlerInfoVolumen(args, memoria);
                  }}));

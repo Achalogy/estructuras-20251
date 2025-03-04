@@ -53,7 +53,7 @@ public:
    * @param argv Lista de argumentos que representan el comando a ejecutar.
    * @return Código de retorno del comando ejecutado.
    */
-  int ejecutarComando(std::vector<std::string> argv, Memoria memoria);
+  int ejecutarComando(std::vector<std::string> argv, Memoria &memoria);
 
   /**
    * @brief Constructor de CommandManager. Inicializa los comandos disponibles.

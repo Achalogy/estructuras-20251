@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int handlerSalir(vector<string> argv, Memoria memoria)
+int handlerSalir(vector<string> argv, Memoria &memoria)
 {
   exit(0);
   return 0;
@@ -13,7 +13,7 @@ int handlerSalir(vector<string> argv, Memoria memoria)
 Comando CommandManager::salirCommand = *(
     new Comando({"salir",
                  1,
-                 [](vector<string> args, Memoria memoria)
+                 [](vector<string> args, Memoria &memoria)
                  {
                    return handlerSalir(args, memoria);
                  }}));

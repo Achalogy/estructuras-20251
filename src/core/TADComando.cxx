@@ -8,7 +8,7 @@
 #include "TADComando.h"
 #include "TADImagen.h"
 
-Comando::Comando(std::string n, int nA, std::function<int(std::vector<std::string>, Memoria memoria)> f)
+Comando::Comando(std::string n, int nA, std::function<int(std::vector<std::string>, Memoria &memoria)> f)
 {
   name = n;
   minArgs = nA;

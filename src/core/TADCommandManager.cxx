@@ -59,7 +59,7 @@ Comando *CommandManager::encontrarComando(string name)
   return nullptr;
 }
 
-int CommandManager::ejecutarComando(vector<string> argv, Memoria memoria)
+int CommandManager::ejecutarComando(vector<string> argv, Memoria &memoria)
 {
   if (argv.size() == 0)
     return 0;
