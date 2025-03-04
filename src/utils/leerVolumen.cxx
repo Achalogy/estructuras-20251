@@ -20,14 +20,14 @@ Volumen *leerVolumen(std::string baseName, int n_im)
     {
       Imagen *img = leerImagenPGM(filename);
 
-      if(imagenes.size() > 0 && (imagenes[0].getAlto() != img->getAlto()) || imagenes[0].getAncho() != img->getAncho())
+      if (imagenes.size() > 0 && (imagenes[0].getAlto() != img->getAlto()) || imagenes[0].getAncho() != img->getAncho())
         throw std::runtime_error("La imagen leida tiene un tamaño diferente a las demas");
 
       imagenes.push_back(*img);
     }
     catch (const std::exception &err)
     {
-      throw std::runtime_error("Error leyendo " + filename + ": " + err.what());
+      throw std::runtime_error("Error leyendo " + filename + ": \n  " + err.what());
     }
   }
 
