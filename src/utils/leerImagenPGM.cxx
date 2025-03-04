@@ -64,16 +64,16 @@ Imagen *leerImagenPGM(std::string path)
   {
     int mi = vi - 3;
     
-    if(mi >= (W * H) - 1)
+    if(mi >= (W * H))
       break;
 
     int i = floor(mi / W);
     int j = mi % W;
 
-    if (contenido[mi] < 0)
+    if (contenido[vi] < 0)
       throw std::runtime_error("Se intento leer un pixel con intensidad negativa");
 
-    unsigned short pixel = (unsigned short)contenido[mi];
+    unsigned short pixel = (unsigned short)contenido[vi];
 
     if (pixel > M)
       throw std::runtime_error("Se intento leer un pixel con intensidad mayor a la maxima especificada por el archivo.");
