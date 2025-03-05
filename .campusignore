@@ -26,6 +26,10 @@ docs/latex/*
 
 .campusignore
 
+# Doxygen
+
+Doxifile
+
 # Backups
 
 *.bundle
