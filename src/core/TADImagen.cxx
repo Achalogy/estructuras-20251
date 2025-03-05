@@ -37,6 +37,7 @@ Imagen::Imagen(std::string r_path, unsigned int r_ancho, unsigned int r_alto, un
   alto = r_alto;
   contenido = r_contenido;
   path = r_path;
+  max_intensidad = r_max_intensidad;
 }
 
 unsigned int Imagen::getAlto()
