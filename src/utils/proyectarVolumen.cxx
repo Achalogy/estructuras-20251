@@ -42,6 +42,8 @@ int calcularPixel(std::vector<int> rayo, char criterio)
   }
   case 'n': // mediana
   {
+    if (rayo.size() == 1)
+      return rayo[0];
     sort(rayo.begin(), rayo.end());
     int mid = rayo.size() / 2;
 
@@ -49,7 +51,9 @@ int calcularPixel(std::vector<int> rayo, char criterio)
     {
       v = rayo[mid - 1] + rayo[mid];
       v /= 2;
-    }else {
+    }
+    else
+    {
       v = rayo[mid];
     }
     break;
