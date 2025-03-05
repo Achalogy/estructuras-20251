@@ -33,3 +33,7 @@ Doxifile
 # Backups
 
 *.bundle
+
+# Tests
+
+src/tests/*
