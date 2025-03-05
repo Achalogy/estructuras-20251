@@ -40,13 +40,6 @@ public:
   std::vector<Imagen> getImagenes();
 
   /**
-   * @brief Retorna una imagen en la posicion solicitada del conjunto de imagenes
-   * @return Imagen en la posicion del conjunto de imagenes
-   * @throw runtime_error si el indice de la imagen no es valido o no representa ninguna imagen en el volumen
-   */
-  Imagen getImagen(int n_imagen);
-
-  /**
    * @brief Retorna el numero de imagenes que contiene el volumen
    * @return Numero de imagenes del volumen
    */

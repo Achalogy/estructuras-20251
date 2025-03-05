@@ -32,14 +32,6 @@ std::vector<Imagen> Volumen::getImagenes()
   return imagenes;
 }
 
-Imagen Volumen::getImagen(int n_imagen)
-{
-  if (n_imagen < imagenes.size())
-    return imagenes[n_imagen];
-  else
-    throw std::runtime_error("Error al intentar leer la imagen, no existe una imagen en la posicion " + n_imagen);
-}
-
 int Volumen::getNumeroImagenes()
 {
   return n_im;
