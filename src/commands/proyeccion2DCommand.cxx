@@ -2,26 +2,32 @@
 #include <fstream>
 #include "../core/TADCommandManager.h"
 #include "../core/TADImagen.h"
+#include "../utils/proyectarVolumen.h"
+#include "../utils/guardarImagenPGM.h"
 
 using namespace std;
 
-// SWITCH DE PRIMER ENTREGA
-
-bool validProyeccion2D = false;
 
 int handlerProyeccion2D(vector<string> argv, Memoria &memoria)
 {
-    if (validProyeccion2D)
-    {
-        cout << "La proyeccion 2D del volumen en memoria ha sido generada y almacenada en el archivo nombre_archivo.pgm" << endl;
-        return 0;
-    }
-    else
-    {
-        cout << "El volumen no ha sido cargado en memoria" << endl;
-        cout << "La proyeccion 2D no pudo ser generada" << endl;
-        return 1;
-    }
+  Volumen *vol = memoria.getVolumenEnMemoria();
+
+  if (vol == nullptr)
+  {
+    cout << "No hay un volumen cargado en memoria" << endl;
+    return 0;
+  }
+
+  try {
+    Imagen *img = proyectarVolumen(memoria.getVolumenEnMemoria(), argv[1][0], argv[2][0]);
+
+    guardarImagenPGM(img, argv[3]);
+  } catch(const std::exception &err) {
+    std::cerr << "Error: " << err.what() << std::endl;
+    return 1;
+  }
+
+  return 0;
 }
 
 Comando CommandManager::proyeccion2DCommand = *(
