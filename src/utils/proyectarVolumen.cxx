@@ -33,14 +33,14 @@ int calcularPixel(std::vector<int> rayo, char criterio)
 
   switch (criterio)
   {
-  case 'p':
+  case 'p': // promedio
   {
     for (int i : rayo)
       v += i;
     v /= rayo.size();
     break;
   }
-  case 'n':
+  case 'n': // mediana
   {
     sort(rayo.begin(), rayo.end());
     int mid = rayo.size() / 2;
@@ -54,7 +54,7 @@ int calcularPixel(std::vector<int> rayo, char criterio)
     }
     break;
   }
-  case 'm':
+  case 'm': // minimo
   {
     v = INT_MAX;
     for (int i : rayo)
@@ -62,7 +62,7 @@ int calcularPixel(std::vector<int> rayo, char criterio)
         v = i;
     break;
   }
-  case 'M':
+  case 'M': // maximo
   {
     for (int i : rayo)
       if (i > v)
