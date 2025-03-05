@@ -19,10 +19,10 @@ class Volumen
 {
 private:
   std::vector<Imagen> imagenes; ///< Conjunto de imagenes del volumen
-  unsigned int n_im;            ///< Numero de imagenes en el volumen
+  int n_im;            ///< Numero de imagenes en el volumen
   std::string baseName;         ///< Nombre base de las imagenes del volumen
-  unsigned short altura;          ///< Altura de las imagenes del volumen
-  unsigned short ancho;           ///< Ancho de las imagenes del volumen
+  int altura;          ///< Altura de las imagenes del volumen
+  int ancho;           ///< Ancho de las imagenes del volumen
 
 public:
   /**
@@ -44,13 +44,13 @@ public:
    * @return Imagen en la posicion del conjunto de imagenes
    * @throw runtime_error si el indice de la imagen no es valido o no representa ninguna imagen en el volumen
    */
-  Imagen getImagen(unsigned int n_imagen);
+  Imagen getImagen(int n_imagen);
 
   /**
    * @brief Retorna el numero de imagenes que contiene el volumen
    * @return Numero de imagenes del volumen
    */
-  unsigned int getNumeroImagenes();
+  int getNumeroImagenes();
 
   /**
    * @brief Retorna el base name del volumen
@@ -62,13 +62,13 @@ public:
    * @brief Retorna la altura de las imagenes
    * @return altura de las imagenes
    */
-  unsigned short getAltura();
+  int getAltura();
 
   /**
    * @brief Retorna el ancho de las imagenes
    * @return ancho de las imagenes
    */
-  unsigned short getAncho();
+  int getAncho();
 };
 
 #endif

@@ -83,9 +83,9 @@ int calcularPixel(std::vector<int> rayo, char criterio)
 
 Imagen *proyectarVolumen(Volumen *vol, char direccion, char criterio)
 {
-  std::vector<std::vector<unsigned short>> proyeccion;
+  std::vector<std::vector<int>> proyeccion;
 
-  unsigned int H, W;
+  int H, W;
 
   // [x, y, z]
   // x - mov columna en imagen
@@ -130,9 +130,9 @@ Imagen *proyectarVolumen(Volumen *vol, char direccion, char criterio)
     throw std::runtime_error("Direccion Invalida");
   }
 
-  proyeccion = std::vector<std::vector<unsigned short>>(H, std::vector<unsigned short>(W, -1));
+  proyeccion = std::vector<std::vector<int>>(H, std::vector<int>(W, -1));
 
-  unsigned short M = 0;
+  int M = 0;
   for (int i = 0; i < H; i++)
   {
     for (int j = 0; j < W; j++)
@@ -146,7 +146,7 @@ Imagen *proyectarVolumen(Volumen *vol, char direccion, char criterio)
       if (direccion == 'z')
         rayo = lanzarRayo(vol, mov, j, i, 0);
 
-      proyeccion[i][j] = (unsigned short)calcularPixel(rayo, criterio);
+      proyeccion[i][j] = calcularPixel(rayo, criterio);
 
       if (proyeccion[i][j] > M)
         M = proyeccion[i][j];

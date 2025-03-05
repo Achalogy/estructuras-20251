@@ -72,7 +72,7 @@ Imagen *leerImagenPGM(std::string path)
   if (contenido.size() < (W * H) + 3)
     throw std::runtime_error("El achivo esta incompleto");
 
-  std::vector<std::vector<unsigned short>> mContenido(H, std::vector<unsigned short>(W, 0));
+  std::vector<std::vector<int>> mContenido(H, std::vector<int>(W, 0));
 
   for (int vi = 3; vi < contenido.size(); vi++)
   {
@@ -87,7 +87,7 @@ Imagen *leerImagenPGM(std::string path)
     if (contenido[vi] < 0)
       throw std::runtime_error("Se intento leer un pixel con intensidad negativa");
 
-    unsigned short pixel = (unsigned short)contenido[vi];
+    int pixel = contenido[vi];
 
     if (pixel > M)
       throw std::runtime_error("Se intento leer un pixel con intensidad mayor a la maxima especificada por el archivo.");
@@ -95,7 +95,7 @@ Imagen *leerImagenPGM(std::string path)
     mContenido[i][j] = pixel;
   }
 
-  Imagen *imagen = new Imagen(path, (unsigned int)W, (unsigned int)H, (unsigned short)M, mContenido);
+  Imagen *imagen = new Imagen(path, W, H, M, mContenido);
 
   return imagen;
 }

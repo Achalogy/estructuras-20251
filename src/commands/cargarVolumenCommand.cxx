@@ -30,7 +30,7 @@ int handlerCargarVolumen(vector<string> argv, Memoria &memoria)
     if (*endptr != '\0')
       throw std::runtime_error("Formato invalido para la cantidad de imagenes");
 
-    Volumen *volumen = leerVolumen(argv[1], (int)n_im);
+    Volumen *volumen = leerVolumen(argv[1], (int) n_im);
 
     memoria.setVolumenEnMemoria(volumen);
 

@@ -19,8 +19,8 @@ Volumen::Volumen(std::string r_baseName, std::vector<Imagen> r_imagenes)
   imagenes = r_imagenes;
   baseName = r_baseName;
   if(r_imagenes.size() > 0) {
-    altura = (unsigned short) r_imagenes[0].getAlto();
-    ancho = (unsigned short) r_imagenes[0].getAncho();
+    altura =  r_imagenes[0].getAlto();
+    ancho =  r_imagenes[0].getAncho();
   } else {
     altura = 0;
     ancho = 0;
@@ -32,7 +32,7 @@ std::vector<Imagen> Volumen::getImagenes()
   return imagenes;
 }
 
-Imagen Volumen::getImagen(unsigned int n_imagen)
+Imagen Volumen::getImagen(int n_imagen)
 {
   if (n_imagen < imagenes.size())
     return imagenes[n_imagen];
@@ -40,7 +40,7 @@ Imagen Volumen::getImagen(unsigned int n_imagen)
     throw std::runtime_error("Error al intentar leer la imagen, no existe una imagen en la posicion " + n_imagen);
 }
 
-unsigned int Volumen::getNumeroImagenes()
+int Volumen::getNumeroImagenes()
 {
   return n_im;
 }
@@ -49,10 +49,10 @@ std::string Volumen::getBaseName() {
   return baseName;
 }
 
-unsigned short Volumen::getAltura() {
+int Volumen::getAltura() {
   return altura;
 }
 
-unsigned short Volumen::getAncho() {
+int Volumen::getAncho() {
   return ancho;
 }

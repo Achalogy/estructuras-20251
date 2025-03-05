@@ -43,9 +43,9 @@ void executeTest(std::string path, int n_im)
 
 void mostrarImg(Imagen *img)
 {
-  for (std::vector<unsigned short> v : img->getContenido())
+  for (std::vector<int> v : img->getContenido())
   {
-    for (unsigned short i : v)
+    for (int i : v)
     {
       std::cout << i << " ";
     }

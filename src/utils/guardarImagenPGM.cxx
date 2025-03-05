@@ -12,9 +12,9 @@ void guardarImagenPGM(Imagen *img, std::string path)
   archivo << img->getAncho() << " " << img->getAlto() << std::endl;
   archivo << img->getMaxIntensidad() << std::endl;
 
-  for (std::vector<unsigned short> v : img->getContenido())
+  for (std::vector<int> v : img->getContenido())
   {
-    for (unsigned short i : v)
+    for (int i : v)
     {
       archivo << i << " ";
     }

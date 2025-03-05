@@ -22,7 +22,7 @@ std::vector<int> getIntVectorFromStr(std::string linea) {
 
     if (*endptr == '\0')
     {
-      nums.push_back((int)num);
+      nums.push_back((int) num);
       token = strtok(NULL, " ");
     }
     else

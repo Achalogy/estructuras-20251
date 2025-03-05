@@ -7,7 +7,7 @@
 
 #include "TADImagen.h"
 
-Imagen::Imagen(std::string r_path, unsigned int r_ancho, unsigned int r_alto, unsigned short r_max_intensidad, std::vector<std::vector<unsigned short>> r_contenido)
+Imagen::Imagen(std::string r_path, int r_ancho, int r_alto, int r_max_intensidad, std::vector<std::vector<int>> r_contenido)
 {
   // Verificar valores
   if (r_ancho < 0 || r_alto < 0)
@@ -19,7 +19,7 @@ Imagen::Imagen(std::string r_path, unsigned int r_ancho, unsigned int r_alto, un
 
   bool matriz_invalida = r_contenido.size() != r_alto;
 
-  for (std::vector<unsigned short> i : r_contenido)
+  for (std::vector<int> i : r_contenido)
   {
     if (matriz_invalida)
       break;
@@ -40,19 +40,19 @@ Imagen::Imagen(std::string r_path, unsigned int r_ancho, unsigned int r_alto, un
   max_intensidad = r_max_intensidad;
 }
 
-unsigned int Imagen::getAlto()
+int Imagen::getAlto()
 {
   return alto;
 }
-unsigned int Imagen::getAncho()
+int Imagen::getAncho()
 {
   return ancho;
 }
-unsigned short Imagen::getMaxIntensidad()
+int Imagen::getMaxIntensidad()
 {
   return max_intensidad;
 }
-std::vector<std::vector<unsigned short>> Imagen::getContenido()
+std::vector<std::vector<int>> Imagen::getContenido()
 {
   return contenido;
 }
