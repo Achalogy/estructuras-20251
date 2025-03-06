@@ -10,7 +10,7 @@
 Volumen *leerVolumen(std::string baseName, int n_im)
 {
   if(n_im < 1 || n_im > 99)
-    throw runtime_error("Cantidad de imagenes fuera de rango (1-99)");
+    throw std::runtime_error("Cantidad de imagenes fuera de rango (1-99)");
 
   std::vector<Imagen> imagenes;
 
