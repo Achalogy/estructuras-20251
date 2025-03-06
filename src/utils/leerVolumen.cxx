@@ -1,6 +1,6 @@
 /**
  * @file leerVolumen.cxx
- * @brief Implementacion de leerVolumen.h
+ * @brief Implementación de leerVolumen.h
  */
 
 #include <bits/stdc++.h>

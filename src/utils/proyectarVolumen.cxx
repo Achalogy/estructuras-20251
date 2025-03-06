@@ -1,3 +1,7 @@
+/**
+ * @file proyectarVolumen.cxx
+ * @brief Implementación de proyectarVolumen.h
+ */
 #include <bits/stdc++.h>
 
 #include "../core/TADImagen.h"

@@ -1,6 +1,6 @@
 /**
  * @file leerLineaArchivo.cxx
- * @brief Implementacion de leerLineaArchivo.h
+ * @brief Implementación de leerLineaArchivo.h
  */
 
 #include<bits/stdc++.h>

@@ -1,6 +1,6 @@
 /**
  * @file getIntVectorFromStr.cxx
- * @brief Implementacion de getIntVectorFromStr.h
+ * @brief Implementación de getIntVectorFromStr.h
  * @throw runtime_error si la linea no contiene solo numeros
  */
 

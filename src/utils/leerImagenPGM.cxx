@@ -1,6 +1,6 @@
 /**
  * @file leerImagenPGM.cxx
- * @brief Implementacion de leerImagenPGM.h
+ * @brief Implementación de leerImagenPGM.h
  */
 
 #include <bits/stdc++.h>
