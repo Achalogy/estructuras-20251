@@ -5,6 +5,6 @@
 #include "../core/TADImagen.h"
 #include "../core/TADVolumen.h"
 
-Imagen *proyectarVolumen(Volumen *vol, char direccion, char criterio);
+Imagen *proyectarVolumen(Volumen *vol, char direccion, std::string criterio);
 
 #endif

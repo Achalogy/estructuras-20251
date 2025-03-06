@@ -118,10 +118,10 @@ int handlerAyuda(vector<string> argv, Memoria &memoria)
       cout << "         y: filas" << endl;
       cout << "         z: profundidad" << endl;
       cout << "     El criterio puede ser:" << endl;
-      cout << "         m: minimo" << endl;
-      cout << "         M: maximo" << endl;
-      cout << "         p: promedio" << endl;
-      cout << "         n: mediana" << endl;
+      cout << "         minimo" << endl;
+      cout << "         maximo" << endl;
+      cout << "         promedio" << endl;
+      cout << "         mediana" << endl;
       cout << "     La imagen generada se guarda en nombre_archivo.pgm." << endl;
       cout << "     Este comando solo funciona si hay un volumen cargado." << endl
            << endl;

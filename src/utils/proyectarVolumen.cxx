@@ -27,20 +27,17 @@ std::vector<int> lanzarRayo(Volumen *vol, std::vector<int> mov, int x, int y, in
   return nums;
 }
 
-int calcularPixel(std::vector<int> rayo, char criterio)
+int calcularPixel(std::vector<int> rayo, std::string criterio)
 {
   int v = 0;
 
-  switch (criterio)
-  {
-  case 'p': // promedio
+  if (criterio == "promedio")
   {
     for (int i : rayo)
       v += i;
     v /= rayo.size();
-    break;
   }
-  case 'n': // mediana
+  else if (criterio == "mediana")
   {
     if (rayo.size() == 1)
       return rayo[0];
@@ -56,32 +53,27 @@ int calcularPixel(std::vector<int> rayo, char criterio)
     {
       v = rayo[mid];
     }
-    break;
   }
-  case 'm': // minimo
+  else if (criterio == "minimo")
   {
     v = INT_MAX;
     for (int i : rayo)
       if (i < v)
         v = i;
-    break;
   }
-  case 'M': // maximo
+  else if (criterio == "maximo")
   {
     for (int i : rayo)
       if (i > v)
         v = i;
-    break;
   }
-
-  default:
+  else
     throw std::runtime_error("Criterio Invalido");
-  }
 
   return v;
 }
 
-Imagen *proyectarVolumen(Volumen *vol, char direccion, char criterio)
+Imagen *proyectarVolumen(Volumen *vol, char direccion, std::string criterio)
 {
   std::vector<std::vector<int>> proyeccion;
 
