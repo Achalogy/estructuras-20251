@@ -74,7 +74,7 @@ Imagen *leerImagenPGM(std::string path)
     throw std::runtime_error("La imagen esta en un formato invalido, la intensidad maxima esta fuera del rango (0 - 255)");
 
   if (contenido.size() < (W * H) + 3)
-    throw std::runtime_error("El achivo esta incompleto");
+    throw std::runtime_error("El archivo esta incompleto");
 
   std::vector<std::vector<int>> mContenido(H, std::vector<int>(W, 0));
 
