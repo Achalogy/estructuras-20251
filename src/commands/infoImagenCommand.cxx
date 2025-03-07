@@ -1,32 +1,41 @@
+/**
+ * @file infoImagenCommand.cxx
+ * @brief Implementación del comando info_imagen
+ */
+
 #include <bits/stdc++.h>
 #include <fstream>
-#include "commandManager.h"
+#include "../core/TADCommandManager.h"
+#include "../core/TADImagen.h"
 
 using namespace std;
 
-// SWITCH DE PRIMER ENTREGA
-
-bool validinfoImagen = false;
-
-int dummyInfoImagen(vector<string> argv)
+/**
+ * @brief Revisa si existe una imagen cargada en memoria, si es así muestra su información
+ * @param argv Vector de strings que contiene los argumentos del usuario. (Ignorado)
+ * @param memoria Memoria del sistema
+ * @return 0 si la ejecución fue exitosa
+ */
+int handlerInfoImagen(vector<string> argv, Memoria &memoria)
 {
-    if (validinfoImagen)
-    {
-        cout << "Imagen cargada en memoria: imagen_ejemplo.pgm, ancho: W, alto: H" << endl;
-        return 0;
-    }
-    else
-    {
-        cout << "No hay imagen cargada en memoria" << endl;
-        return 1;
-    }
+  Imagen *img = memoria.getImagenEnMemoria();
 
+  if (img == nullptr) {
+    cout << "No hay una imagen cargada en memoria" << endl;
+    return 0;
+  }
+
+  cout << "Imagen cargada en memoria: " << img->getPath() << endl;
+  cout << "  Ancho: " << img->getAncho() << endl;
+  cout << "  Alto:  " << img->getAlto() << endl;
+  
+  return 0;
 }
 
-Command CommandManager::infoImagenCommand = *(
-    new Command({"info_imagen",
+Comando CommandManager::infoImagenCommand = *(
+    new Comando({"info_imagen",
                  1,
-                 [](vector<string> args)
+                 [](vector<string> args, Memoria &memoria)
                  {
-                     return dummyInfoImagen(args);
+                   return handlerInfoImagen(args, memoria);
                  }}));

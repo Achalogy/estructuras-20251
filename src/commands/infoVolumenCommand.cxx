@@ -1,31 +1,42 @@
+/**
+ * @file infoVolumenCommand.cxx
+ * @brief Implementación del comando info_volumen
+ */
+
 #include <bits/stdc++.h>
 #include <fstream>
-#include "commandManager.h"
+#include "../core/TADCommandManager.h"
+#include "../core/TADImagen.h"
 
 using namespace std;
 
-// SWITCH DE PRIMER ENTREGA
-
-bool validInfoVolumen = false;
-
-int dummyInfoVolumen(vector<string> argv)
+/**
+ * @brief Revisa si existe un volumen cargado en memoria, si es así muestra su información
+ * @param argv Vector de strings que contiene los argumentos del usuario. (Ignorado)
+ * @param memoria Memoria del sistema
+ * @return 0 si la ejecución fue exitosa
+ */
+int handlerInfoVolumen(vector<string> argv, Memoria &memoria)
 {
-    if (validInfoVolumen)
-    {
-        cout << "Volumen cargado en memoria: nombre_base, tamaño: n_im, ancho: W, alto: H" << endl;
-        return 0;
-    }
-    else
-    {
-        cout << "No hay volumen cargado en memoria" << endl;
-        return 1;
-    }
+  Volumen *vol = memoria.getVolumenEnMemoria();
+
+  if(vol == nullptr) {
+    cout << "No hay un volumen cargado en memoria" << endl;
+    return 0;
+  }
+
+  cout << "Volumen cargado en memoria: " << vol->getBaseName() << endl;
+  cout << "  Tamano: " << vol->getNumeroImagenes() << endl;
+  cout << "  Ancho:  " << vol->getAncho() << endl;
+  cout << "  Alto:   " << vol->getAltura() << endl;
+  
+  return 0;
 }
 
-Command CommandManager::infoVolumenCommand = *(
-    new Command({"info_volumen",
+Comando CommandManager::infoVolumenCommand = *(
+    new Comando({"info_volumen",
                  1,
-                 [](vector<string> args)
+                 [](vector<string> args, Memoria &memoria)
                  {
-                   return dummyInfoVolumen(args);
+                   return handlerInfoVolumen(args, memoria);
                  }}));

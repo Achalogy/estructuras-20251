@@ -1,15 +1,37 @@
+/**
+ * @file ayudaCommand.cxx
+ * @brief Implementación del sistema de ayuda para los comandos disponibles.
+ *
+ * Este archivo contiene la implementación de la función `handlerAyuda`,
+ * que proporciona información sobre los comandos del programa.
+ */
+
 #include <bits/stdc++.h>
-#include "commandManager.h"
+#include "../core/TADCommandManager.h"
+#include "../core/TADImagen.h"
 
 using namespace std;
 
-int dummyAyuda(vector<string> argv)
+/**
+ * @brief Muestra información sobre los comandos disponibles en el programa.
+ *
+ * Dependiendo de los argumentos, esta función imprime una lista general de comandos
+ * o una descripción detallada de un comando específico.
+ *
+ * @param argv Vector de strings que contiene los argumentos del usuario.
+ *        - `argv[0]`: Nombre del programa (ignorado).
+ *        - `argv[1]`: (Opcional) Nombre del comando para obtener más detalles.
+ *
+ * @return 0 si la ejecución fue exitosa.
+ */
+
+int handlerAyuda(vector<string> argv, Memoria &memoria)
 {
 
   if (argv.size() == 1)
   { // Ayuda general
 
-    cout << "v0.0.1" << endl;
+    cout << "v1.0.0" << endl;
     cout << "Usa `ayuda` para ver esta lista" << endl;
     cout << "Usa `ayuda comando` para encontrar mas informacion sobre `comando`" << endl
          << endl;
@@ -164,10 +186,15 @@ int dummyAyuda(vector<string> argv)
   return 0;
 }
 
-Command CommandManager::ayudaCommand = *(
-    new Command({"ayuda",
+/**
+ * @brief Define el comando `ayuda` en CommandManager.
+ *
+ * Asocia el comando `ayuda` con la función `handlerAyuda`.
+ */
+Comando CommandManager::ayudaCommand = *(
+    new Comando({"ayuda",
                  1,
-                 [](vector<string> args)
+                 [](vector<string> args, Memoria &memoria)
                  {
-                   return dummyAyuda(args);
+                      return handlerAyuda(args, memoria);
                  }}));

@@ -1,0 +1,1 @@
+rm -rf test.out; g++ -I ./src -std=c++11 $(find . -name "*.cxx") src/test.cpp -o test.out; ./test.out

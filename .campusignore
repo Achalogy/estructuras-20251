@@ -6,6 +6,7 @@
 bin/*
 data/*
 scripts/releaseProject.ts
+scripts/test.sh
 
 # TS Files
 
@@ -20,4 +21,19 @@ node_modules/*
 .vscode/*
 .build/*
 
+docs/html/*
+docs/latex/*
+
 .campusignore
+
+# Doxygen
+
+Doxifile
+
+# Backups
+
+*.bundle
+
+# Tests
+
+src/tests/*

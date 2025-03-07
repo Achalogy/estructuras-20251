@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
-#include "commandManager.h"
+#include "../core/TADCommandManager.h"
+#include "../core/TADImagen.h"
 
 using namespace std;
 
@@ -7,7 +8,7 @@ using namespace std;
 
 bool validSegmentar = false;
 
-int dummySegmentar(vector<string> argv)
+int handlerSegmentar(vector<string> argv, Memoria &memoria)
 {
   if (validSegmentar)
   {
@@ -24,10 +25,10 @@ int dummySegmentar(vector<string> argv)
   return 0;
 }
 
-Command CommandManager::segmentarCommand = *(
-    new Command({"segmentar",
+Comando CommandManager::segmentarCommand = *(
+    new Comando({"segmentar",
                  5,
-                 [](vector<string> args)
+                 [](vector<string> args, Memoria &memoria)
                  {
-                   return dummySegmentar(args);
+                   return handlerSegmentar(args, memoria);
                  }}));

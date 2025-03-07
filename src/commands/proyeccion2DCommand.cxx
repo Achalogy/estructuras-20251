@@ -1,32 +1,45 @@
 #include <bits/stdc++.h>
 #include <fstream>
-#include "commandManager.h"
+#include "../core/TADCommandManager.h"
+#include "../core/TADImagen.h"
+#include "../utils/proyectarVolumen.h"
+#include "../utils/guardarImagenPGM.h"
 
 using namespace std;
 
-// SWITCH DE PRIMER ENTREGA
 
-bool validProyeccion2D = false;
-
-int dummyProyeccion2D(vector<string> argv)
+int handlerProyeccion2D(vector<string> argv, Memoria &memoria)
 {
-    if (validProyeccion2D)
-    {
-        cout << "La proyeccion 2D del volumen en memoria ha sido generada y almacenada en el archivo nombre_archivo.pgm" << endl;
-            return 0;
-    }
-    else
-    {
-        cout << "El volumen no ha sido cargado en memoria" << endl;
-        cout << "La proyeccion 2D no pudo ser generada" << endl;
-        return 1;
-    }
+  Volumen *vol = memoria.getVolumenEnMemoria();
+
+  if (vol == nullptr)
+  {
+    cout << "No hay un volumen cargado en memoria" << endl;
+    return 0;
+  }
+
+  try {
+    Imagen *img = proyectarVolumen(vol, argv[1][0], argv[2]);
+
+    std::cout << "Proyeccion generado con exito, guardando archivo..." << std::endl;
+    std::cout << "  Criterio:  " << argv[2] << std::endl;
+    std::cout << "  Direccion: " << argv[1][0] << std::endl;
+
+    guardarImagenPGM(img, argv[3]);
+
+    std::cout << "Archivo " << argv[3] << " guardado con exito" << std::endl;
+  } catch(const std::exception &err) {
+    std::cerr << "Error: " << err.what() << std::endl;
+    return 1;
+  }
+
+  return 0;
 }
 
-Command CommandManager::proyeccion2DCommand = *(
-    new Command({"proyeccion2D",
+Comando CommandManager::proyeccion2DCommand = *(
+    new Comando({"proyeccion2D",
                  4,
-                 [](vector<string> args)
+                 [](vector<string> args, Memoria &memoria)
                  {
-                   return dummyProyeccion2D(args);
+                     return handlerProyeccion2D(args, memoria);
                  }}));

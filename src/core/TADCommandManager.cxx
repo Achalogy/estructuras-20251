@@ -1,5 +1,16 @@
+/**
+ * @file TADCommandManager.cxx
+ * @brief Implementaciones de commandManager.h
+ *
+ * Gestión de comandos para un sistema de procesamiento.
+ *
+ * Este archivo contiene la definición de las clases Command y CommandManager,
+ * que permiten la ejecución y administración de comandos dentro de un sistema.
+ */
+
 #include <bits/stdc++.h>
-#include "commandManager.h"
+#include "TADCommandManager.h"
+#include "TADMemoria.h"
 
 using namespace std;
 
@@ -18,8 +29,9 @@ vector<string> CommandManager::getNextLine()
     cout << "Max Input Size Reached" << endl;
     return vector<string>();
   }
-  
-  if(line.size() == 0) {
+
+  if (line.size() == 0)
+  {
     return vector<string>();
   }
 
@@ -35,9 +47,9 @@ vector<string> CommandManager::getNextLine()
   return argv;
 }
 
-Command *CommandManager::encontrarComando(string name)
+Comando *CommandManager::encontrarComando(string name)
 {
-  for (Command &c : this->comandos)
+  for (Comando &c : comandos)
   {
     if (c.name == name)
     {
@@ -47,10 +59,11 @@ Command *CommandManager::encontrarComando(string name)
   return nullptr;
 }
 
-int CommandManager::ejecutarComando(vector<string> argv)
+int CommandManager::ejecutarComando(vector<string> argv, Memoria &memoria)
 {
-  if(argv.size() == 0) return 0;
-  Command *command = this->encontrarComando(argv[0]);
+  if (argv.size() == 0)
+    return 0;
+  Comando *command = encontrarComando(argv[0]);
 
   // Buscar comando
 
@@ -66,7 +79,7 @@ int CommandManager::ejecutarComando(vector<string> argv)
     return 1;
   }
 
-  int execCode = command->function(argv);
+  int execCode = command->function(argv, memoria);
 
   return execCode;
 }
