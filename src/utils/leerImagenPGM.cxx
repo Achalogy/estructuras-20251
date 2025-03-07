@@ -56,7 +56,7 @@ Imagen *leerImagenPGM(std::string path)
   catch (const std::exception &err)
   {
     archivo.close();
-    throw err.what();
+    throw std::runtime_error(err.what());
   }
 
   if (contenido.size() < 3)
@@ -66,8 +66,12 @@ Imagen *leerImagenPGM(std::string path)
   int H = contenido[1];
   int M = contenido[2];
 
-  if (W <= 0 || H <= 0 || M < 0 || M > 255)
-    throw std::runtime_error("La imagen esta en un formato invalido");
+  if (H <= 0)
+    throw std::runtime_error("La imagen esta en un formato invalido, alto es negativo");
+  if (W <= 0)
+    throw std::runtime_error("La imagen esta en un formato invalido, ancho es negativo");
+  if (M < 0 || M > 255)
+    throw std::runtime_error("La imagen esta en un formato invalido, la intensidad maxima esta fuera del rango (0 - 255)");
 
   if (contenido.size() < (W * H) + 3)
     throw std::runtime_error("El achivo esta incompleto");
