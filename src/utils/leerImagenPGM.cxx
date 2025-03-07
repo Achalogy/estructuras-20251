@@ -56,7 +56,7 @@ Imagen *leerImagenPGM(std::string path)
   catch (const std::exception &err)
   {
     archivo.close();
-    throw err;
+    throw err.what();
   }
 
   if (contenido.size() < 3)
