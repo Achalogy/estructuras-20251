@@ -19,7 +19,7 @@ int handlerProyeccion2D(vector<string> argv, Memoria &memoria)
   }
 
   try {
-    Imagen *img = proyectarVolumen(memoria.getVolumenEnMemoria(), argv[1][0], argv[2]);
+    Imagen *img = proyectarVolumen(vol, argv[1][0], argv[2]);
 
     std::cout << "Proyeccion generado con exito, guardando archivo..." << std::endl;
     std::cout << "  Criterio:  " << argv[2] << std::endl;
