@@ -11,6 +11,7 @@
 #include <bits/stdc++.h>
 #include "TADCommandManager.h"
 #include "TADMemoria.h"
+#include "../colors/colors.h"
 
 using namespace std;
 
