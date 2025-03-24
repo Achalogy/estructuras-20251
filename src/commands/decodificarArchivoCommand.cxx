@@ -2,25 +2,28 @@
 #include <fstream>
 #include "../core/TADCommandManager.h"
 #include "../core/TADImagen.h"
+#include "../utils/leerImagenHuff.h"
+#include "../utils/guardarImagenPGM.h"
 
 using namespace std;
 
-// SWITCH DE PRIMER ENTREGA
-
-bool validDecodificarImagen = false;
-
 int handlerDecodificarArchivo(vector<string> argv, Memoria &memoria)
 {
-    if (validDecodificarImagen)
-    {
-        cout << "El archivo nombre_archivo.huf ha sido decodificado exitosamente y almacenado en nombre_imagen.pgm" << endl;
-        return 0;
-    }
-    else
-    {
-        cout << "El archivo nombre_archivo.huf no pudo ser decodificado" << endl;
-        return 1;
-    }
+  try
+  {
+    Imagen *imagen = leerImagenHuff(argv[1]);
+    memoria.setImagenEnMemoria(imagen);
+
+    cout << "Se ha finalizado la carga y dedodificacion del archivo " << argv[1] << endl;
+
+    guardarImagenPGM(imagen, argv[2]);
+
+    std::cout << "Archivo " << argv[2] << " guardado con exito" << std::endl;
+    return 0;
+  } catch (const std::exception &err) {
+    std::cerr << "ERROR " << argv[1] << ": " << err.what() << endl;
+    return 1;
+  }
 }
 
 Comando CommandManager::decodificarArchivoCommand = *(
@@ -28,5 +31,5 @@ Comando CommandManager::decodificarArchivoCommand = *(
                  3,
                  [](vector<string> args, Memoria &memoria)
                  {
-                     return handlerDecodificarArchivo(args, memoria);
+                   return handlerDecodificarArchivo(args, memoria);
                  }}));

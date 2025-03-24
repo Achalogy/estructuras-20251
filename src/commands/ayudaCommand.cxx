@@ -31,7 +31,7 @@ int handlerAyuda(vector<string> argv, Memoria &memoria)
   if (argv.size() == 1)
   { // Ayuda general
 
-    cout << "v1.0.0" << endl;
+    cout << "v2.0.0 beta" << endl;
     cout << "Usa `ayuda` para ver esta lista" << endl;
     cout << "Usa `ayuda comando` para encontrar mas informacion sobre `comando`" << endl
          << endl;
