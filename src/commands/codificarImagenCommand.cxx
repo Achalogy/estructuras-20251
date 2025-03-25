@@ -19,16 +19,28 @@ int handlerCodificarImagen(vector<string> argv, Memoria &memoria)
 
     Huffman h;
 
+    cout << "Codificando imagen..." << endl;
+
     h.genTree(img->getContenido());
 
     // h.writeGraph();
+    cout << "Guardando archivo " << argv[1] << endl;
 
-    guardarImagenHUFF(
-        img,
-        h.getReps(),
-        h.encode(img->getContenido()),
-        argv[1]);
-    return 0;
+    try
+    {
+        guardarImagenHUFF(
+            img,
+            h.getReps(),
+            h.encode(img->getContenido()),
+            argv[1]);
+        cout << "El archivo se ha guardado con exito" << endl;
+        return 0;
+    }
+    catch (const std::exception &err)
+    {
+        cerr << "Error: " << err.what();
+        return 1;
+    }
 }
 
 Comando CommandManager::codificarImagenCommand = *(
