@@ -1,0 +1,40 @@
+# Nombre del ejecutable
+PROG = proyecto.out
+
+# Directorios
+SRC_DIR = src
+
+# Buscar todos los archivos fuente en subdirectorios y agregar explícitamente main.cpp
+SOURCES = $(shell find $(SRC_DIR) -type f \( -name "*.cxx" -o -name "*.cpp" \)) src/main.cpp
+
+# Generar los archivos objeto
+OBJECTS = $(SOURCES:.cxx=.o)
+OBJECTS := $(OBJECTS:.cpp=.o)
+
+# Compilador y opciones
+CXX = g++
+CXXFLAGS = -I$(SRC_DIR) -std=c++11 -Wall
+
+# Regla principal
+all: clean build run
+
+# Limpiar archivos generados
+clean:
+	rm -rf $(PROG) $(OBJECTS)
+
+# Compilar y enlazar
+build: $(PROG)
+
+$(PROG): $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+# Compilar cada archivo fuente
+%.o: %.cxx
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Ejecutar el programa
+run: $(PROG)
+	./$(PROG)

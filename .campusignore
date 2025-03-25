@@ -37,3 +37,12 @@ Doxifile
 # Tests
 
 src/tests/*
+
+# Make Files
+*.d
+*.o
+Makefile
+Makefile_slow
+
+# Test files
+*.huf
