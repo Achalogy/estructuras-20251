@@ -27,7 +27,7 @@ Imagen::Imagen(std::string r_path, int r_ancho, int r_alto, int r_max_intensidad
     if (i.size() != r_ancho)
       matriz_invalida = true;
   }
-
+  
   if (matriz_invalida)
     throw std::invalid_argument("La dimension de la matriz no concuerda con los datos de alto y ancho");
 
