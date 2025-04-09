@@ -46,6 +46,7 @@ void Huffman::loadTree(std::vector<unsigned long> r_reps)
     }
   }
 
+  
   while (q.size() >= 2)
   {
     NodoHuffman *n1 = q.top();
@@ -133,7 +134,7 @@ int getBit(std::vector<unsigned char> data, int &bit_pos, int &i_byte, unsigned 
   return bit;
 }
 
-int leerPixelData(NodoHuffman *raiz, std::vector<unsigned char> data, int &bit_pos, int &i_byte, unsigned char &buffer)
+int leerPixelData(NodoHuffman *raiz, std::vector<unsigned char> &data, int &bit_pos, int &i_byte, unsigned char &buffer)
 {
   NodoHuffman *n = raiz;
 
