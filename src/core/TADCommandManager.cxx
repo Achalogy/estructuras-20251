@@ -13,6 +13,8 @@
 #include "TADMemoria.h"
 #include "../colors/colors.h"
 
+#define ull unsigned long long
+
 using namespace std;
 
 vector<string> CommandManager::getNextLine()
@@ -62,8 +64,17 @@ Comando *CommandManager::encontrarComando(string name)
 
 int CommandManager::ejecutarComando(vector<string> argv, Memoria &memoria)
 {
+  bool showTime = false;
+
   if (argv.size() == 0)
     return 0;
+
+  if (argv.size() >= 2 && strcmp(argv[0].c_str(), "time") == 0)
+  {
+    argv = vector<string>(argv.begin() + 1, argv.begin() + argv.size());
+    showTime = true;
+  }
+
   Comando *command = encontrarComando(argv[0]);
 
   // Buscar comando
@@ -80,7 +91,23 @@ int CommandManager::ejecutarComando(vector<string> argv, Memoria &memoria)
     return 1;
   }
 
+  ull startTime = std::chrono::duration_cast<std::chrono::milliseconds>(
+                      std::chrono::system_clock::now().time_since_epoch())
+                      .count();
   int execCode = command->function(argv, memoria);
+  ull endTime = std::chrono::duration_cast<std::chrono::milliseconds>(
+                    std::chrono::system_clock::now().time_since_epoch())
+                    .count();
+
+  ull time = endTime - startTime;
+
+  if(showTime) {
+    if(time > 10000) {
+      cout << endl << "Ejecutado en: " << time / 1000 << "s" << endl;
+    }else {
+      cout << endl << "Ejecutado en: " << time << "ms" << endl;
+    }
+  }
 
   return execCode;
 }
