@@ -122,16 +122,14 @@ std::queue<bool> *getRaw(std::vector<unsigned char> data)
 
   for (unsigned char c : data)
   {
-    std::bitset<8> b(c);
-
-    q->push(b[7]);
-    q->push(b[6]);
-    q->push(b[5]);
-    q->push(b[4]);
-    q->push(b[3]);
-    q->push(b[2]);
-    q->push(b[1]);
-    q->push(b[0]);
+    q->push((c >> 7) & 1 == 1);
+    q->push((c >> 6) & 1 == 1);
+    q->push((c >> 5) & 1 == 1);
+    q->push((c >> 4) & 1 == 1);
+    q->push((c >> 3) & 1 == 1);
+    q->push((c >> 2) & 1 == 1);
+    q->push((c >> 1) & 1 == 1);
+    q->push((c >> 0) & 1 == 1);
   }
 
   return q;
