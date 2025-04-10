@@ -46,7 +46,6 @@ void Huffman::loadTree(std::vector<unsigned long> r_reps)
     }
   }
 
-  
   while (q.size() >= 2)
   {
     NodoHuffman *n1 = q.top();
@@ -117,47 +116,56 @@ void Huffman::writeGraph()
   arbol->writeGraph();
 }
 
-int getBit(std::vector<unsigned char> data, int &bit_pos, int &i_byte, unsigned char &buffer)
+std::queue<bool> *getRaw(std::vector<unsigned char> data)
 {
-  if (bit_pos == 8)
-  {
-    i_byte++;
-    
-    if(data.size() <= i_byte) throw std::runtime_error("Archivo incompleto");
+  std::queue<bool> *q = new std::queue<bool>;
 
-    buffer = data[i_byte];
-    bit_pos = 0;
+  for (unsigned char c : data)
+  {
+    std::bitset<8> b(c);
+
+    q->push(b[7]);
+    q->push(b[6]);
+    q->push(b[5]);
+    q->push(b[4]);
+    q->push(b[3]);
+    q->push(b[2]);
+    q->push(b[1]);
+    q->push(b[0]);
   }
 
-  int bit = (buffer >> (7 - bit_pos)) & 1;
-  bit_pos++;
-  return bit;
+  return q;
 }
 
-int leerPixelData(NodoHuffman *raiz, std::vector<unsigned char> &data, int &bit_pos, int &i_byte, unsigned char &buffer)
+int leerPixelData(NodoHuffman *raiz, std::queue<bool> *q)
 {
   NodoHuffman *n = raiz;
 
-  while(n->obtenerDato().c == -1) {
-    n = getBit(data, bit_pos, i_byte, buffer) == 1 ? n->obtenerHijoDer() : n->obtenerHijoIzq();
+  while (n->obtenerDato().c == -1)
+  {
+    n = q->front() ? n->obtenerHijoDer() : n->obtenerHijoIzq();
+    q->pop();
   }
 
   return n->obtenerDato().c;
 }
 
-std::vector<std::vector<int>> Huffman::decode(int W, int H, std::vector<unsigned char> data)
+std::vector<std::vector<int>> Huffman::decode(int W, int H, std::vector<unsigned char> &data)
 {
   std::vector<std::vector<int>> contenido(H,
                                           std::vector<int>(W, 0));
   int bit_pos = 8;
   int i_byte = -1;
   unsigned char buffer;
+  NodoHuffman *raiz = arbol->obtenerRaiz();
+
+  std::queue<bool> *q = getRaw(data);
 
   for (int i = 0; i < H; i++)
   {
     for (int j = 0; j < W; j++)
     {
-      contenido[i][j] = leerPixelData(arbol->obtenerRaiz(), data, bit_pos, i_byte, buffer);
+      contenido[i][j] = leerPixelData(raiz, q);
     }
   }
 

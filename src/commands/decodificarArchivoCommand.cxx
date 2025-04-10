@@ -11,6 +11,7 @@ int handlerDecodificarArchivo(vector<string> argv, Memoria &memoria)
 {
   try
   {
+    cout << "Comenzando a cargar el archivo..." << endl;
     Imagen *imagen = leerImagenHuff(argv[1]);
     memoria.setImagenEnMemoria(imagen);
 

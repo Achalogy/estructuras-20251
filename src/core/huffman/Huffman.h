@@ -29,7 +29,7 @@ public:
   /**
    * @brief Retorna una matriz de enteros, cada entero es un pixel de la imagen
    */
-  std::vector<std::vector<int>> decode(int W, int H, std::vector<unsigned char> data);
+  std::vector<std::vector<int>> decode(int W, int H, std::vector<unsigned char> &data);
 
   /**
    * @brief Retorna un vector de unsigned char, esta es la imagen codificada.
