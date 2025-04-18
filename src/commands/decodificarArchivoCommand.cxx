@@ -42,7 +42,7 @@ int handlerDecodificarArchivo(vector<string> argv, Memoria &memoria) {
     Imagen *imagen = leerImagenHuff(argv[1]);
     memoria.setImagenEnMemoria(imagen);
 
-    cout << "Se ha finalizado la carga y dedodificacion del archivo " << argv[1]
+    cout << "Se ha finalizado la carga y decodificacion del archivo " << argv[1]
          << endl;
 
     guardarImagenPGM(imagen, argv[2]);
