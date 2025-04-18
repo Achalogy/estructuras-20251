@@ -6,6 +6,8 @@
 
 NodoHuffman::NodoHuffman()
 {
+  if(hijoDer != NULL) delete hijoDer;
+  if(hijoIzq != NULL) delete hijoIzq;
   hijoDer = NULL;
   hijoIzq = NULL;
 }
