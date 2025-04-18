@@ -3,22 +3,17 @@
 
 #include <bits/stdc++.h>
 
-class DatoHuffman
-{
-public:
+class DatoHuffman {
+ public:
   int c;
   int n;
   DatoHuffman(int c, int n);
   DatoHuffman();
 
-  friend std::ostream &operator<<(std::ostream &os, const DatoHuffman &p)
-  {
-    if (p.c == -1)
-    {
+  friend std::ostream &operator<<(std::ostream &os, const DatoHuffman &p) {
+    if (p.c == -1) {
       os << "(" << p.c << "," << p.n << ")";
-    }
-    else
-    {
+    } else {
       os << "(" << p.c << "," << p.n << ")";
     }
     return os;
