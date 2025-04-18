@@ -2,20 +2,21 @@
 #define HUFFMAN_H
 
 #include <bits/stdc++.h>
+
 #include "ArbolHuffman.h"
 
-class Huffman
-{
-protected:
+class Huffman {
+ protected:
   ArbolHuffman *arbol;
   std::vector<unsigned long> reps;
 
-public:
+ public:
   Huffman();
   ~Huffman();
 
   /**
-   * @brief Recibe una matriz 2d de enteros y genera el arbol de huffman en base a esta, cada entero representa un pixel.
+   * @brief Recibe una matriz 2d de enteros y genera el arbol de huffman en base
+   * a esta, cada entero representa un pixel.
    */
   void genTree(std::vector<std::vector<int>> contenido);
   /**
@@ -29,16 +30,16 @@ public:
   /**
    * @brief Retorna una matriz de enteros, cada entero es un pixel de la imagen
    */
-  std::vector<std::vector<int>> decode(int W, int H, std::vector<unsigned char> &data);
+  std::vector<std::vector<int>> decode(int W, int H,
+                                       std::vector<unsigned char> &data);
 
   /**
    * @brief Retorna un vector de unsigned char, esta es la imagen codificada.
-   * 
+   *
    * Tener cuidado, cada unsigned char del vector NO representa un pixel!
    * Para obtener el pixel se debe decodificar
    */
-  std::vector<unsigned char> encode(
-      std::vector<std::vector<int>> content);
+  std::vector<unsigned char> encode(std::vector<std::vector<int>> content);
 
   void writeGraph();
 
