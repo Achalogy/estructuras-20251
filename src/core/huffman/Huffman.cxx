@@ -71,7 +71,7 @@ std::vector<unsigned char> Huffman::encode(
   unsigned char buffer = 0;
   int bit_pos = 0;
 
-  for (std::vector<int> f : content)
+  for (std::vector<int> f : content) {
     for (int i : f) {
       std::string path = arbol->obtenerTabla()[i];
 
@@ -88,6 +88,7 @@ std::vector<unsigned char> Huffman::encode(
         }
       }
     }
+  }
 
   return bytes;
 }

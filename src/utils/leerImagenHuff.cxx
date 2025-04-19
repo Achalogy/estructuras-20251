@@ -9,7 +9,8 @@ Imagen *leerImagenHuff(std::string path) {
   if (!archivo.is_open())
     throw std::runtime_error("No se pudo acceder a " + path);
 
-  int W, H, M;
+  unsigned short W, H;
+  unsigned char M;
   std::vector<unsigned long> reps(256);
   std::vector<unsigned char> data;
 
