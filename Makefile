@@ -16,7 +16,7 @@ DEPS := $(OBJECTS:.o=.d)
 
 # Compilador y opciones
 CXX = g++
-CXXFLAGS = -I$(SRC_DIR) -std=c++11 -Wall -MMD -MP
+CXXFLAGS = -I$(SRC_DIR) -std=c++11 -Wall -MMD -MP -O2
 
 # Regla principal
 all: $(PROG)

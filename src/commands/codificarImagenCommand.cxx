@@ -1,3 +1,13 @@
+/**
+ * @file codificarImagenCommand.cxx
+ * @brief Implementación del comando encargado de códificar una imagen cargada
+ * previamente en memoria
+ *
+ * Este archivo contiene la implementación de la función
+ * `handlerCodificarImagen`, que genera un archivo binario que contiene la
+ * imagen codificada usando el algoritmo Huffman.
+ */
+
 #include <bits/stdc++.h>
 
 #include <fstream>
@@ -8,6 +18,21 @@
 #include "../utils/guardarImagenHuff.h"
 
 using namespace std;
+
+/**
+ * @brief Códifica y genera el archivo binario de una imagen cargada previamente
+ * en memoria haciendo uso del algoritmo Huffman
+ *
+ * @param argv Vector de strings que contiene los argumentos del usuario.
+ *        - `argv[0]`: Nombre del programa (ignorado).
+ *        - `argv[1]`: (Obligatorio) Nombre del archivo destino donde se
+ * guardará el contenido binario que se genera a partir de la codificación de
+ * Huffman.
+ *
+ * @param memoria Memoria del sistema
+ *
+ * @return 0 si la ejecución fue exitosa.
+ */
 
 int handlerCodificarImagen(vector<string> argv, Memoria &memoria) {
   Imagen *img = memoria.getImagenEnMemoria();
