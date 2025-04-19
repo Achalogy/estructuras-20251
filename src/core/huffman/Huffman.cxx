@@ -140,6 +140,8 @@ std::vector<std::vector<int>> Huffman::decode(
     }
   }
 
+  delete q;
+
   return contenido;
 }
 
