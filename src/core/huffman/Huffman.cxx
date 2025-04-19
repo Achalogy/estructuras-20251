@@ -17,15 +17,14 @@ Huffman::~Huffman() {
 
 void Huffman::genTree(unsigned char M,
                       std::vector<std::vector<int>> contenido) {
-  reps = std::vector<unsigned long>(M, 0);
+  reps = std::vector<unsigned long>(((int)M) + 1, 0);
 
   for (std::vector<int> f : contenido)
     for (int i : f) reps[i]++;
-
   loadTree(reps);
 }
 
-void Huffman::loadTree(std::vector<unsigned long> r_reps) {
+void Huffman::loadTree(std::vector<unsigned long> &r_reps) {
   std::priority_queue<NodoHuffman *, std::vector<NodoHuffman *>,
                       ComparadorNodoHuffman>
       q;
@@ -102,14 +101,14 @@ std::queue<bool> *getRaw(std::vector<unsigned char> data) {
   std::queue<bool> *q = new std::queue<bool>;
 
   for (unsigned char c : data) {
-    q->push((c >> 7) & 1 == 1);
-    q->push((c >> 6) & 1 == 1);
-    q->push((c >> 5) & 1 == 1);
-    q->push((c >> 4) & 1 == 1);
-    q->push((c >> 3) & 1 == 1);
-    q->push((c >> 2) & 1 == 1);
-    q->push((c >> 1) & 1 == 1);
-    q->push((c >> 0) & 1 == 1);
+    q->push(((c >> 7) & 1) == 1);
+    q->push(((c >> 6) & 1) == 1);
+    q->push(((c >> 5) & 1) == 1);
+    q->push(((c >> 4) & 1) == 1);
+    q->push(((c >> 3) & 1) == 1);
+    q->push(((c >> 2) & 1) == 1);
+    q->push(((c >> 1) & 1) == 1);
+    q->push(((c >> 0) & 1) == 1);
   }
 
   return q;

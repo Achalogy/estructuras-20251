@@ -25,7 +25,7 @@ class Huffman {
    * i es cada valor de luminosidad del pixel
    * e_i es la cantidad de veces que aparece esta luminosidad
    */
-  void loadTree(std::vector<unsigned long> r_reps);
+  void loadTree(std::vector<unsigned long> &r_reps);
 
   /**
    * @brief Retorna una matriz de enteros, cada entero es un pixel de la imagen
