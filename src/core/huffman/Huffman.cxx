@@ -15,8 +15,9 @@ Huffman::~Huffman() {
   reps.clear();
 }
 
-void Huffman::genTree(std::vector<std::vector<int>> contenido) {
-  reps = std::vector<unsigned long>(256, 0);
+void Huffman::genTree(unsigned char M,
+                      std::vector<std::vector<int>> contenido) {
+  reps = std::vector<unsigned long>(M, 0);
 
   for (std::vector<int> f : contenido)
     for (int i : f) reps[i]++;

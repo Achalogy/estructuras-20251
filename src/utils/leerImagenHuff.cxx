@@ -11,7 +11,7 @@ Imagen *leerImagenHuff(std::string path) {
 
   unsigned short W, H;
   unsigned char M;
-  std::vector<unsigned long> reps(256);
+  std::vector<unsigned long> reps(M, 0);
   std::vector<unsigned char> data;
 
   archivo.read(reinterpret_cast<char *>(&W), sizeof(W));
@@ -19,7 +19,7 @@ Imagen *leerImagenHuff(std::string path) {
   archivo.read(reinterpret_cast<char *>(&M), sizeof(M));
 
   archivo.read(reinterpret_cast<char *>(reps.data()),
-               sizeof(unsigned long) * 256);
+               sizeof(unsigned long) * M);
 
   while (!archivo.eof()) {
     unsigned char c;

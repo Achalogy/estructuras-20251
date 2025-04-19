@@ -15,10 +15,10 @@ class Huffman {
   ~Huffman();
 
   /**
-   * @brief Recibe una matriz 2d de enteros y genera el arbol de huffman en base
-   * a esta, cada entero representa un pixel.
+   * @brief Recibe el valor máximo de intensidad y una matriz 2d de enteros y
+   * genera el arbol de huffman en base a esta, cada entero representa un pixel.
    */
-  void genTree(std::vector<std::vector<int>> contenido);
+  void genTree(unsigned char M, std::vector<std::vector<int>> contenido);
   /**
    * @brief Recibe un vector de elementos. Por cada elemento e_i:
    *
