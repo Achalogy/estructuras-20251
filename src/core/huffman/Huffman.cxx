@@ -90,6 +90,14 @@ std::vector<unsigned char> Huffman::encode(
     }
   }
 
+  if (bit_pos != 0) {
+    for (int i = bit_pos; i < 8; i++) {
+      buffer = (buffer << 1) | false;
+    }
+
+    bytes.push_back(buffer);
+  }
+
   return bytes;
 }
 
@@ -101,14 +109,14 @@ std::queue<bool> *getRaw(std::vector<unsigned char> data) {
   std::queue<bool> *q = new std::queue<bool>;
 
   for (unsigned char c : data) {
-    q->push(((c >> 7) & 1) == 1);
-    q->push(((c >> 6) & 1) == 1);
-    q->push(((c >> 5) & 1) == 1);
-    q->push(((c >> 4) & 1) == 1);
-    q->push(((c >> 3) & 1) == 1);
-    q->push(((c >> 2) & 1) == 1);
-    q->push(((c >> 1) & 1) == 1);
-    q->push(((c >> 0) & 1) == 1);
+    q->push((c >> 7) & 1);
+    q->push((c >> 6) & 1);
+    q->push((c >> 5) & 1);
+    q->push((c >> 4) & 1);
+    q->push((c >> 3) & 1);
+    q->push((c >> 2) & 1);
+    q->push((c >> 1) & 1);
+    q->push((c >> 0) & 1);
   }
 
   return q;

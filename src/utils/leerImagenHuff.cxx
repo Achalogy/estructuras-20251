@@ -11,15 +11,18 @@ Imagen *leerImagenHuff(std::string path) {
 
   unsigned short W, H;
   unsigned char M;
-  std::vector<unsigned long> reps(((int)M) + 1, 0);
   std::vector<unsigned char> data;
 
   archivo.read(reinterpret_cast<char *>(&W), sizeof(W));
   archivo.read(reinterpret_cast<char *>(&H), sizeof(H));
   archivo.read(reinterpret_cast<char *>(&M), sizeof(M));
 
-  archivo.read(reinterpret_cast<char *>(reps.data()),
-               sizeof(unsigned long) * ((int)M) + 1);
+  std::vector<unsigned long> reps(((int)M) + 1, 0);
+
+  unsigned long long repsSize =
+      sizeof(unsigned long) * (((unsigned long long)M) + 1LL);
+
+  archivo.read(reinterpret_cast<char *>(reps.data()), repsSize);
 
   while (!archivo.eof()) {
     unsigned char c;
@@ -33,7 +36,7 @@ Imagen *leerImagenHuff(std::string path) {
 
   std::vector<std::vector<int>> contenido = h->decode(W, H, data);
 
-  Imagen *imagen = new Imagen(path, W, H, M, contenido);
+  Imagen *imagen = new Imagen(path, (int)W, (int)H, M, contenido);
 
   delete h;
 

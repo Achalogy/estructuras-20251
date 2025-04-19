@@ -18,8 +18,11 @@ void guardarImagenHUFF(Imagen *img, std::vector<unsigned long> reps,
   archivo.write(reinterpret_cast<char *>(&H), sizeof(H));
   archivo.write(reinterpret_cast<char *>(&M), sizeof(M));
 
-  archivo.write(reinterpret_cast<char *>(reps.data()),
-                reps.size() * sizeof(unsigned long));
+  unsigned long long repsSize =
+      sizeof(unsigned long) * (((unsigned long long)M) + 1LL);
+
+  archivo.write(reinterpret_cast<char *>(reps.data()), repsSize);
+
   archivo.write(reinterpret_cast<char *>(data.data()), data.size());
 
   archivo.close();

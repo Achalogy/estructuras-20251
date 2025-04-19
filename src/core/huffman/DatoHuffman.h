@@ -6,8 +6,8 @@
 class DatoHuffman {
  public:
   int c;
-  int n;
-  DatoHuffman(int c, int n);
+  unsigned long n;
+  DatoHuffman(int c, unsigned long n);
   DatoHuffman();
 
   friend std::ostream &operator<<(std::ostream &os, const DatoHuffman &p) {

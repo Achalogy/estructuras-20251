@@ -48,7 +48,6 @@ int handlerCodificarImagen(vector<string> argv, Memoria &memoria) {
 
   h.genTree(img->getMaxIntensidad(), img->getContenido());
 
-  // h.writeGraph();
   cout << "Guardando archivo " << argv[1] << endl;
 
   try {
