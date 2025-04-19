@@ -3,15 +3,15 @@
 
 #include "DatoHuffman.h"
 
-class NodoHuffman
-{
-protected:
+class NodoHuffman {
+ protected:
   DatoHuffman dato;
   NodoHuffman *hijoIzq;
   NodoHuffman *hijoDer;
 
-public:
+ public:
   NodoHuffman();
+  ~NodoHuffman();
   DatoHuffman &obtenerDato();
   void fijarDato(DatoHuffman &val);
   NodoHuffman *obtenerHijoIzq();
@@ -20,10 +20,8 @@ public:
   void fijarHijoDer(NodoHuffman *der);
 };
 
-struct ComparadorNodoHuffman
-{
-  bool operator()(NodoHuffman *a, NodoHuffman *b)
-  {
+struct ComparadorNodoHuffman {
+  bool operator()(NodoHuffman *a, NodoHuffman *b) {
     return a->obtenerDato().n > b->obtenerDato().n;
   }
 };
