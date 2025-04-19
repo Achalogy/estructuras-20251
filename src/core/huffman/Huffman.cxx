@@ -1,44 +1,36 @@
 #ifndef HUFFMAN_CXX
 #define HUFFMAN_CXX
 
-#include <bits/stdc++.h>
-
 #include "Huffman.h"
 
-Huffman::Huffman()
-{
-  arbol = NULL;
-}
+#include <bits/stdc++.h>
 
-Huffman::~Huffman()
-{
-  if (arbol != NULL)
-  {
+Huffman::Huffman() { arbol = NULL; }
+
+Huffman::~Huffman() {
+  if (arbol != NULL) {
     delete arbol;
     arbol = NULL;
   }
+  reps.clear();
 }
 
-void Huffman::genTree(std::vector<std::vector<int>> contenido)
-{
-
+void Huffman::genTree(std::vector<std::vector<int>> contenido) {
   reps = std::vector<unsigned long>(256, 0);
 
   for (std::vector<int> f : contenido)
-    for (int i : f)
-      reps[i]++;
+    for (int i : f) reps[i]++;
 
   loadTree(reps);
 }
 
-void Huffman::loadTree(std::vector<unsigned long> r_reps)
-{
-  std::priority_queue<NodoHuffman *, std::vector<NodoHuffman *>, ComparadorNodoHuffman> q;
+void Huffman::loadTree(std::vector<unsigned long> r_reps) {
+  std::priority_queue<NodoHuffman *, std::vector<NodoHuffman *>,
+                      ComparadorNodoHuffman>
+      q;
 
-  for (int i = 0; i < r_reps.size(); i++)
-  {
-    if (r_reps[i] != 0)
-    {
+  for (int i = 0; i < r_reps.size(); i++) {
+    if (r_reps[i] != 0) {
       NodoHuffman *n = new NodoHuffman();
       DatoHuffman val(i, r_reps[i]);
       n->fijarDato(val);
@@ -46,8 +38,7 @@ void Huffman::loadTree(std::vector<unsigned long> r_reps)
     }
   }
 
-  while (q.size() >= 2)
-  {
+  while (q.size() >= 2) {
     NodoHuffman *n1 = q.top();
     q.pop();
     NodoHuffman *n2 = q.top();
@@ -74,28 +65,23 @@ void Huffman::loadTree(std::vector<unsigned long> r_reps)
 }
 
 std::vector<unsigned char> Huffman::encode(
-    std::vector<std::vector<int>> content)
-{
+    std::vector<std::vector<int>> content) {
   std::vector<unsigned char> bytes;
 
   unsigned char buffer = 0;
   int bit_pos = 0;
 
   for (std::vector<int> f : content)
-    for (int i : f)
-    {
-
+    for (int i : f) {
       std::string path = arbol->obtenerTabla()[i];
 
-      for (char c : path)
-      {
+      for (char c : path) {
         bool bit = c == '1';
 
         buffer = (buffer << 1) | bit;
         bit_pos++;
 
-        if (bit_pos == 8)
-        {
+        if (bit_pos == 8) {
           bytes.push_back(buffer);
           buffer = 0;
           bit_pos = 0;
@@ -106,22 +92,14 @@ std::vector<unsigned char> Huffman::encode(
   return bytes;
 }
 
-std::vector<unsigned long> Huffman::getReps()
-{
-  return reps;
-}
+std::vector<unsigned long> Huffman::getReps() { return reps; }
 
-void Huffman::writeGraph()
-{
-  arbol->writeGraph();
-}
+void Huffman::writeGraph() { arbol->writeGraph(); }
 
-std::queue<bool> *getRaw(std::vector<unsigned char> data)
-{
+std::queue<bool> *getRaw(std::vector<unsigned char> data) {
   std::queue<bool> *q = new std::queue<bool>;
 
-  for (unsigned char c : data)
-  {
+  for (unsigned char c : data) {
     q->push((c >> 7) & 1 == 1);
     q->push((c >> 6) & 1 == 1);
     q->push((c >> 5) & 1 == 1);
@@ -135,12 +113,10 @@ std::queue<bool> *getRaw(std::vector<unsigned char> data)
   return q;
 }
 
-int leerPixelData(NodoHuffman *raiz, std::queue<bool> *q)
-{
+int leerPixelData(NodoHuffman *raiz, std::queue<bool> *q) {
   NodoHuffman *n = raiz;
 
-  while (n->obtenerDato().c == -1)
-  {
+  while (n->obtenerDato().c == -1) {
     n = q->front() ? n->obtenerHijoDer() : n->obtenerHijoIzq();
     q->pop();
   }
@@ -148,10 +124,9 @@ int leerPixelData(NodoHuffman *raiz, std::queue<bool> *q)
   return n->obtenerDato().c;
 }
 
-std::vector<std::vector<int>> Huffman::decode(int W, int H, std::vector<unsigned char> &data)
-{
-  std::vector<std::vector<int>> contenido(H,
-                                          std::vector<int>(W, 0));
+std::vector<std::vector<int>> Huffman::decode(
+    int W, int H, std::vector<unsigned char> &data) {
+  std::vector<std::vector<int>> contenido(H, std::vector<int>(W, 0));
   int bit_pos = 8;
   int i_byte = -1;
   unsigned char buffer;
@@ -159,13 +134,13 @@ std::vector<std::vector<int>> Huffman::decode(int W, int H, std::vector<unsigned
 
   std::queue<bool> *q = getRaw(data);
 
-  for (int i = 0; i < H; i++)
-  {
-    for (int j = 0; j < W; j++)
-    {
+  for (int i = 0; i < H; i++) {
+    for (int j = 0; j < W; j++) {
       contenido[i][j] = leerPixelData(raiz, q);
     }
   }
+
+  delete q;
 
   return contenido;
 }

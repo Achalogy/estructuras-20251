@@ -35,21 +35,26 @@ using namespace std;
  *
  * @return 0 si la ejecución fue exitosa.
  */
-
 int handlerDecodificarArchivo(vector<string> argv, Memoria &memoria) {
-  try {
+  Imagen *imagen = NULL;
+
+try {
     cout << "Comenzando a cargar el archivo..." << endl;
     Imagen *imagen = leerImagenHuff(argv[1]);
     memoria.setImagenEnMemoria(imagen);
 
     cout << "Se ha finalizado la carga y decodificacion del archivo " << argv[1]
+
          << endl;
 
     guardarImagenPGM(imagen, argv[2]);
 
+    if (imagen != NULL) delete imagen;
+
     std::cout << "Archivo " << argv[2] << " guardado con exito" << std::endl;
     return 0;
   } catch (const std::exception &err) {
+    if (imagen != NULL) delete imagen;
     std::cerr << "ERROR " << argv[1] << ": " << err.what() << endl;
     return 1;
   }

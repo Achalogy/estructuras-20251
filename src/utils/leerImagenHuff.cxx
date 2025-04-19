@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
-#include "../core/TADImagen.h"
-#include "../core/Huffman/Huffman.h"
 
-Imagen *leerImagenHuff(std::string path)
-{
+#include "../core/Huffman/Huffman.h"
+#include "../core/TADImagen.h"
+
+Imagen *leerImagenHuff(std::string path) {
   std::ifstream archivo(path, std::ios::binary);
 
   if (!archivo.is_open())
@@ -17,22 +17,24 @@ Imagen *leerImagenHuff(std::string path)
   archivo.read(reinterpret_cast<char *>(&H), sizeof(H));
   archivo.read(reinterpret_cast<char *>(&M), sizeof(M));
 
-  archivo.read(reinterpret_cast<char *>(reps.data()), sizeof(unsigned long) * 256);
+  archivo.read(reinterpret_cast<char *>(reps.data()),
+               sizeof(unsigned long) * 256);
 
-  while (!archivo.eof())
-  {
+  while (!archivo.eof()) {
     unsigned char c;
     archivo.read(reinterpret_cast<char *>(&c), sizeof(unsigned char));
     data.push_back(c);
   }
   archivo.close();
 
-  Huffman h;
-  h.loadTree(reps);
+  Huffman *h = new Huffman;
+  h->loadTree(reps);
 
-  std::vector<std::vector<int>> contenido = h.decode(W, H, data);
+  std::vector<std::vector<int>> contenido = h->decode(W, H, data);
 
   Imagen *imagen = new Imagen(path, W, H, M, contenido);
+
+  delete h;
 
   return imagen;
 }
