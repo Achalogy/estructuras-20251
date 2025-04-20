@@ -32,7 +32,7 @@ int handlerAyuda(vector<string> argv, Memoria &memoria)
      if (argv.size() == 1)
      { // Ayuda general
 
-          cout << __COLOR_BLUE << "v2.5.2 release candidate" << __COLOR_RESET << endl;
+          cout << __COLOR_BLUE << "v2.5.beta-2" << __COLOR_RESET << endl;
           cout << "Usa `" << __COLOR_GREEN << "ayuda" << __COLOR_RESET << "` para ver esta lista" << endl;
           cout << "Usa `" << __COLOR_GREEN << "ayuda" << __COLOR_RESET << "` <comando>` para encontrar mas informacion sobre el comando <comando>" << endl
                << endl;
