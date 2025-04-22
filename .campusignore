@@ -46,3 +46,14 @@ Makefile_slow
 
 # Test files
 *.huf
+
+# Graficos
+*.dot
+
+# Imagenes de prueba
+scripts/*.pgm
+*.pgm
+
+# Scripts de prueba
+scripts/jest.sh
+scripts/*.cpp
