@@ -61,7 +61,7 @@ public:
    * @brief Retorna el contenido de la imagen
    * @return Contenido de la imagen
    */
-  std::vector<std::vector<int>> getContenido();
+  std::vector<std::vector<int>> &getContenido();
 };
 
 #endif

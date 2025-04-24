@@ -43,5 +43,5 @@ Imagen::Imagen(std::string r_path, int r_ancho, int r_alto,
 int Imagen::getAlto() { return alto; }
 int Imagen::getAncho() { return ancho; }
 int Imagen::getMaxIntensidad() { return max_intensidad; }
-std::vector<std::vector<int>> Imagen::getContenido() { return contenido; }
+std::vector<std::vector<int>> &Imagen::getContenido() { return contenido; }
 std::string Imagen::getPath() { return path; }

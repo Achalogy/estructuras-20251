@@ -75,9 +75,9 @@ int CommandManager::ejecutarComando(vector<string> argv, Memoria &memoria)
     showTime = true;
   }
 
-  Comando *command = encontrarComando(argv[0]);
-
   // Buscar comando
+  
+  Comando *command = encontrarComando(argv[0]);
 
   if (command == nullptr)
   {
