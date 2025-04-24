@@ -11,6 +11,8 @@
 #include "../core/TADImagen.h"
 #include "../utils/leerImagenPGM.h"
 
+#define endl "\n"
+
 using namespace std;
 
 /**

@@ -7,6 +7,8 @@ using namespace std;
 std::random_device rd;
 std::mt19937 g(rd());
 
+#define endl "\n"
+
 class Imagen {
  public:
   ll ancho;            ///< Ancho de la imagen

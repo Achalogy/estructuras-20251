@@ -4,6 +4,8 @@
 
 using namespace std;
 
+#define endl "\n"
+
 #ifdef DEBUG
 #define DEBUG_MSG(str)              \
   do {                              \
@@ -251,9 +253,9 @@ int main(int argc, char** argv) {
 
     std::vector<std::vector<int>>& contenido = img->contenido;
 
-    archivo << "P2" << std::endl;
-    archivo << ancho << " " << alto << std::endl;
-    archivo << img->max_intensidad << std::endl;
+    archivo << "P2" << endl;
+    archivo << ancho << " " << alto << endl;
+    archivo << img->max_intensidad << endl;
 
     for (int i = 0; i < alto; i++) {
       for (int j = 0; j < ancho; j++) {
@@ -264,7 +266,7 @@ int main(int argc, char** argv) {
         if (j != ancho - 1) archivo << " ";
       }
 
-      if (i != alto - 1) archivo << std::endl;
+      if (i != alto - 1) archivo << endl;
     }
 
     archivo.close();

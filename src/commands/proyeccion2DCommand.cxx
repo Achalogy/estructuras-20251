@@ -1,19 +1,20 @@
 #include <bits/stdc++.h>
+
 #include <fstream>
+
 #include "../core/TADCommandManager.h"
 #include "../core/TADImagen.h"
-#include "../utils/proyectarVolumen.h"
 #include "../utils/guardarImagenPGM.h"
+#include "../utils/proyectarVolumen.h"
+
+#define endl "\n"
 
 using namespace std;
 
-
-int handlerProyeccion2D(vector<string> argv, Memoria &memoria)
-{
+int handlerProyeccion2D(vector<string> argv, Memoria &memoria) {
   Volumen *vol = memoria.getVolumenEnMemoria();
 
-  if (vol == nullptr)
-  {
+  if (vol == nullptr) {
     cout << "No hay un volumen cargado en memoria" << endl;
     return 0;
   }
@@ -21,15 +22,15 @@ int handlerProyeccion2D(vector<string> argv, Memoria &memoria)
   try {
     Imagen *img = proyectarVolumen(vol, argv[1][0], argv[2]);
 
-    std::cout << "Proyeccion generado con exito, guardando archivo..." << std::endl;
-    std::cout << "  Criterio:  " << argv[2] << std::endl;
-    std::cout << "  Direccion: " << argv[1][0] << std::endl;
+    std::cout << "Proyeccion generado con exito, guardando archivo..." << endl;
+    std::cout << "  Criterio:  " << argv[2] << endl;
+    std::cout << "  Direccion: " << argv[1][0] << endl;
 
     guardarImagenPGM(img, argv[3]);
 
-    std::cout << "Archivo " << argv[3] << " guardado con exito" << std::endl;
-  } catch(const std::exception &err) {
-    std::cerr << "Error: " << err.what() << std::endl;
+    std::cout << "Archivo " << argv[3] << " guardado con exito" << endl;
+  } catch (const std::exception &err) {
+    std::cerr << "Error: " << err.what() << endl;
     return 1;
   }
 
@@ -37,9 +38,6 @@ int handlerProyeccion2D(vector<string> argv, Memoria &memoria)
 }
 
 Comando CommandManager::proyeccion2DCommand = *(
-    new Comando({"proyeccion2D",
-                 4,
-                 [](vector<string> args, Memoria &memoria)
-                 {
-                     return handlerProyeccion2D(args, memoria);
+    new Comando({"proyeccion2D", 4, [](vector<string> args, Memoria &memoria) {
+                   return handlerProyeccion2D(args, memoria);
                  }}));

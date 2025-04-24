@@ -17,6 +17,8 @@
 #include "../core/huffman/Huffman.h"
 #include "../utils/guardarImagenHuff.h"
 
+#define endl "\n"
+
 using namespace std;
 
 /**

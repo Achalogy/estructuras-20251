@@ -1,7 +1,9 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-using namespace ::std;
+using namespace std;
+
+#define endl "\n"
 
 int usage(char *arg) {
   // exit program

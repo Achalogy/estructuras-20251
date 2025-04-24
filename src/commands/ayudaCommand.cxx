@@ -11,6 +11,8 @@
 #include "../core/TADImagen.h"
 #include "../colors/colors.h"
 
+#define endl "\n"
+
 using namespace std;
 
 /**

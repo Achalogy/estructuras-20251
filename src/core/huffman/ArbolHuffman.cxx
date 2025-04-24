@@ -5,6 +5,8 @@
 
 #include <bits/stdc++.h>
 
+#define endl "\n"
+
 ArbolHuffman::ArbolHuffman(NodoHuffman *nodo) { raiz = nodo; }
 
 ArbolHuffman::~ArbolHuffman() {
@@ -50,11 +52,11 @@ void ArbolHuffman::writeGraph() {
   std::ofstream file("arbol.dot");
 
   if (!file.is_open()) {
-    std::cerr << "No se pudo escribir el archivo" << std::endl;
+    std::cerr << "No se pudo escribir el archivo" << endl;
     return;
   }
 
-  file << "digraph G {" << std::endl;
+  file << "digraph G {" << endl;
 
   std::queue<NodoHuffman *> q;
   std::string relations = "";

@@ -18,6 +18,8 @@
 #include "../utils/guardarImagenPGM.h"
 #include "../utils/leerImagenHuff.h"
 
+#define endl "\n"
+
 using namespace std;
 
 /**
@@ -49,7 +51,7 @@ int handlerDecodificarArchivo(vector<string> argv, Memoria &memoria) {
 
     guardarImagenPGM(imagen, argv[2]);
 
-    std::cout << "Archivo " << argv[2] << " guardado con exito" << std::endl;
+    std::cout << "Archivo " << argv[2] << " guardado con exito" << endl;
     return 0;
   } catch (const std::exception &err) {
     std::cerr << "ERROR " << argv[1] << ": " << err.what() << endl;

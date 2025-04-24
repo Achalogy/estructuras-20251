@@ -8,6 +8,8 @@
 #include "../core/TADCommandManager.h"
 #include "../core/TADImagen.h"
 
+#define endl "\n"
+
 using namespace std;
 
 /**
