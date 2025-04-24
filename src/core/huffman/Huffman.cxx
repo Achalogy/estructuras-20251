@@ -136,9 +136,7 @@ int leerPixelData(NodoHuffman *raiz, std::queue<bool> *q) {
 std::vector<std::vector<int>> Huffman::decode(
     int W, int H, std::vector<unsigned char> &data) {
   std::vector<std::vector<int>> contenido(H, std::vector<int>(W, 0));
-  int bit_pos = 8;
-  int i_byte = -1;
-  unsigned char buffer;
+
   NodoHuffman *raiz = arbol->obtenerRaiz();
 
   std::queue<bool> *q = getRaw(data);
