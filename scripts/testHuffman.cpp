@@ -4,6 +4,24 @@
 
 using namespace std;
 
+#ifdef DEBUG
+#define DEBUG_MSG(str)              \
+  do {                              \
+    cout << "\e[34m" << "[DEBUG] "; \
+    cout << str << endl;            \
+    cout << "\e[0m";                \
+  } while (false)
+#define DEBUG_EXEC(statement)              \
+  do {                                     \
+    cout << "\e[34m" << "[DEBUG]" << endl; \
+    statement;                             \
+    cout << "\e[0m";                       \
+  } while (false)
+#else
+#define DEBUG_MSG(str) ((void)0)
+#define DEBUG_EXEC(str) ((void)0)
+#endif
+
 std::random_device rd;
 std::mt19937 g(rd());
 
@@ -188,15 +206,16 @@ int main(int argc, char** argv) {
     exit(1);
   }
 
-  const string sScript = executablePath + " << 'EOF'\n" +
+  const string sScript = executablePath + " > /dev/null 2>&1 << 'EOF'\n" +
                          "cargar_imagen in.pgm\n"
-                         "codificar_imagen coded.huf\n" +
-                         "decodificar_archivo coded.huf out.pgm\n" + "salir\n" +
+                         "codificar_imagen coded.huf\n"
+                         "decodificar_archivo coded.huf out.pgm\n"
+                         "salir\n" +
                          "EOF";
 
   const char* script = sScript.c_str();
 
-  cout << "Comenzando a generar " << nImages << " imagenes" << endl;
+  DEBUG_MSG("Comenzando a generar " << nImages << " imagenes");
 
   for (int i = 0; i < nImages; i++) {
     uniform_int_distribution<> genDimension(
@@ -209,64 +228,81 @@ int main(int argc, char** argv) {
     ancho = genDimension(g);
     alto = genDimension(g);
 
-    cout << "Generando imagen " << i + 1 << endl;
-    cout << "  Ancho = " << ancho << endl;
-    cout << "  Alto = " << alto << endl;
-    cout << "  MaxIntensidad = " << intensidad << endl;
-    cout << "  Pixeles = " << ancho * alto << endl;
+    cout << "Imagen " << i + 1 << " " << ancho << "x" << alto << " ("
+         << intensidad << ") pixeles = " << ancho * alto << " ";
+
+    DEBUG_EXEC(cout << "Generando imagen " << i + 1 << endl;
+               cout << "  Ancho = " << ancho << endl;
+               cout << "  Alto = " << alto << endl;
+               cout << "  MaxIntensidad = " << intensidad << endl;
+               cout << "  Pixeles = " << ancho * alto << endl;);
 
     Imagen* img = genImage(ancho, alto, intensidad);
 
-    cout << "Imagen generada" << endl;
+    DEBUG_MSG("Imagen generada");
 
     std::ofstream archivo("in.pgm");
 
-    if (!archivo.is_open()) cout << ("No se pudo acceder a in.out");
+    if (!archivo.is_open()) {
+      cout << endl;
+      cout << ("No se pudo acceder a in.out");
+      exit(1);
+    }
+
+    std::vector<std::vector<int>>& contenido = img->contenido;
 
     archivo << "P2" << std::endl;
-    archivo << img->ancho << " " << img->alto << std::endl;
+    archivo << ancho << " " << alto << std::endl;
     archivo << img->max_intensidad << std::endl;
 
-    for (std::vector<int> v : img->contenido) {
-      for (int i : v) {
-        archivo << i << " ";
+    for (int i = 0; i < alto; i++) {
+      for (int j = 0; j < ancho; j++) {
+        int value = contenido[i][j];
+
+        archivo << value;
+
+        if (j != ancho - 1) archivo << " ";
       }
-      archivo << std::endl;
+
+      if (i != alto - 1) archivo << std::endl;
     }
 
     archivo.close();
 
-    cout << "Se genero el archivo in.pgm" << endl;
-    cout << "Ejecutando proyecto" << endl;
+    DEBUG_MSG("Se genero el archivo in.pgm");
+    DEBUG_MSG("Ejecutando proyecto");
 
     system(script);
 
     Imagen* outImg = leerImagenPGM("out.pgm");
-    cout << "Archivo pgm decodificado leido" << endl;
+    DEBUG_MSG("Archivo pgm decodificado leido");
 
     // Comparar imagenes
 
-    cout << "Comparando Imagenes" << endl;
+    DEBUG_MSG("Comparando Imagenes");
     if (img->alto == outImg->alto && img->ancho == outImg->ancho &&
         img->max_intensidad == outImg->max_intensidad) {
-      cout << "Alto, ancho e Intensidad revisados y correctos!" << endl;
+      DEBUG_MSG("Alto, ancho e Intensidad revisados y correctos!");
     } else {
+      cout << endl;
       cout << "Algo salio mal revisando alto, ancho e intensidad" << endl;
       exit(1);
     }
 
     if (img->contenido.size() == outImg->contenido.size() &&
         img->contenido[0].size() == outImg->contenido[0].size()) {
-      cout << "Contenido del mismo tam" << endl;
+      DEBUG_MSG("Contenido del mismo tam");
     } else {
+      cout << endl;
       cout << "Algo salio mal, contenido de tam diferente." << endl;
       exit(1);
     }
 
-    cout << "Revisando matriz..." << endl;
+    DEBUG_MSG("Revisando matriz...");
     for (int i = 0; i < img->alto; i++) {
       for (int j = 0; j < img->ancho; j++) {
         if (img->contenido[i][j] != outImg->contenido[i][j]) {
+          cout << endl;
           cout << "Error en (" << i << "," << j << ")" << endl;
           cout << "Valor = " << outImg->contenido[i][j] << endl;
           exit(1);
@@ -277,11 +313,11 @@ int main(int argc, char** argv) {
     delete img;
     delete outImg;
 
-    cout << "Imagen Correcta" << endl;
+    cout << "Correcta" << endl;
 
-    system("ls -lh | grep in.pgm");
-    system("ls -lh | grep coded.huf");
-    system("ls -lh | grep out.pgm");
+    DEBUG_EXEC(system("ls -lh | grep in.pgm");
+               system("ls -lh | grep coded.huf");
+               system("ls -lh | grep out.pgm"););
   }
 
   cout << "CORRECTO!" << endl;
