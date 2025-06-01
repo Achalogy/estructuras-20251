@@ -12,7 +12,7 @@
 
 #include <bits/stdc++.h>
 
-#include "../colors/colors.h"
+#include "../lib/colors.h"
 #include "TADMemoria.h"
 
 #define endl "\n"

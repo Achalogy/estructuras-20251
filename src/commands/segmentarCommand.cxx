@@ -2,26 +2,62 @@
 
 #include "../core/TADCommandManager.h"
 #include "../core/TADImagen.h"
+#include "../utils/genSegmentedImg.h"
+#include "../utils/guardarImagenPGM.h"
 
 #define endl "\n"
 
 using namespace std;
 
-// SWITCH DE PRIMER ENTREGA
-
-bool validSegmentar = false;
-
 int handlerSegmentar(vector<string> argv, Memoria &memoria) {
-  if (validSegmentar) {
-    cout << "La imagen en memoria fue segmentada correctamente y almacenada en "
-            "salida_imagen.pgm"
-         << endl;
+  Imagen *img = memoria.getImagenEnMemoria();
+
+  if (img == nullptr) {
+    cout << "No hay una imagen cargada en memoria" << endl;
     return 0;
-  } else {
-    cout << "No hay imagen cargada en memoria" << endl;
-    cout << "La segmentacion no pudo ser realizada" << endl;
+  }
+
+  int cantSemillas = min(5, (int)(argv.size() - 2) / 3);
+
+  vector<Semilla> semillas;
+
+  try {
+    for (int i = 0; i < cantSemillas; i++) {
+      char *token;
+      unsigned char tag =
+          (unsigned char)strtol(argv[4 + (i * 3)].c_str(), &token, 10);
+
+      if (*token != '\0') {
+        throw runtime_error("El tag en la semilla " + to_string(i + 1) +
+                            " es incorrecto");
+      }
+
+      token = NULL;
+
+      unsigned int y =
+          (unsigned char)strtol(argv[3 + (i * 3)].c_str(), &token, 10);
+      unsigned int x =
+          (unsigned char)strtol(argv[2 + (i * 3)].c_str(), &token, 10);
+
+      cout << "Semilla " << i + 1 << "  - ";
+      cout << " tag: " << (int)tag;
+      cout << " y: " << y;
+      cout << " x: " << x << endl;
+
+      semillas.push_back(Semilla(tag, x, y));
+    }
+
+    cout << "Semillas leidas correctamente" << endl;
+    Imagen *sImg = genSegmentedImg(img, semillas);
+
+    guardarImagenPGM(sImg, argv[1]);
+  } catch (const exception &err) {
+    std::cerr << "Error: " << err.what() << endl;
     return 1;
   }
+
+  cout << "Se ha terminado de segmentar la imagen y se ha guardado en "
+       << argv[1] << endl;
 
   return 0;
 }
