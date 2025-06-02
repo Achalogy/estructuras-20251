@@ -48,7 +48,7 @@ int handlerSegmentar(vector<string> argv, Memoria &memoria) {
         throw new runtime_error("La semilla tiene unas coordenadas invalidas");
       }
 
-      if (tag < 0 || tag > 255) {
+      if (tag < 1 || tag > 255) {
         throw new runtime_error("La semilla tiene un tag invalido (0-255)");
       }
 
