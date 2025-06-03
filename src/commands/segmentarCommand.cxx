@@ -24,8 +24,7 @@ int handlerSegmentar(vector<string> argv, Memoria &memoria) {
   try {
     for (int i = 0; i < cantSemillas; i++) {
       char *token;
-      unsigned char tag =
-          (unsigned char)strtol(argv[4 + (i * 3)].c_str(), &token, 10);
+      int tag = (int)strtol(argv[4 + (i * 3)].c_str(), &token, 10);
 
       if (*token != '\0') {
         throw runtime_error("El tag en la semilla " + to_string(i + 1) +
@@ -34,8 +33,7 @@ int handlerSegmentar(vector<string> argv, Memoria &memoria) {
 
       token = NULL;
 
-      unsigned int y =
-          (unsigned char)strtol(argv[3 + (i * 3)].c_str(), &token, 10);
+      int y = (int)strtol(argv[3 + (i * 3)].c_str(), &token, 10);
 
       if (*token != '\0') {
         throw runtime_error("La coordenada y tiene un valor no numérico");
@@ -43,8 +41,7 @@ int handlerSegmentar(vector<string> argv, Memoria &memoria) {
 
       token = NULL;
 
-      unsigned int x =
-          (unsigned char)strtol(argv[2 + (i * 3)].c_str(), &token, 10);
+      int x = (int)strtol(argv[2 + (i * 3)].c_str(), &token, 10);
 
       if (*token != '\0') {
         throw runtime_error("La coordenada x tiene un valor no numérico");
@@ -63,7 +60,7 @@ int handlerSegmentar(vector<string> argv, Memoria &memoria) {
         throw runtime_error("La semilla tiene un tag invalido (0-255)");
       }
 
-      semillas.push_back(Semilla(tag, x, y));
+      semillas.push_back(Semilla((unsigned char)tag, x, y));
     }
 
     cout << "Semillas leidas correctamente" << endl;

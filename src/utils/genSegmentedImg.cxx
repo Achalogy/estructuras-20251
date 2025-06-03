@@ -56,16 +56,13 @@ Imagen *genSegmentedImg(Imagen *img, vector<Semilla> semillas) {
 
   priority_queue<dijNode, vector<dijNode>, CompareWeights> q;
 
-  map<int, string> colors;
-  string sColors[5] = {__COLOR_RED, __COLOR_GREEN, __COLOR_YELLOW, __COLOR_CYAN,
-                       __COLOR_MAGENTA};
-  for (int i = 0; i < semillas.size(); i++) {
-    colors[semillas[i].getTag()] = sColors[i];
-  }
+  int maxIntensidad = 0;
 
   for (Semilla s : semillas) {
     // Por cada semilla son independientes estas variables, para comparar las
     // distancias tenemos el vector de distancias finales
+
+    maxIntensidad = max(maxIntensidad, (int)s.getTag());
 
     vector<vector<ul>> distances(img->getAlto(),
                                  vector<ul>(img->getAncho(), ULONG_MAX));
@@ -102,26 +99,10 @@ Imagen *genSegmentedImg(Imagen *img, vector<Semilla> semillas) {
       processNeighborPixel(img, a, q, distances, 1, 0);
       processNeighborPixel(img, a, q, distances, 0, -1);
     }
-
-    DEBUG_EXEC(for (auto l : contenido) {
-      for (int pixel : l) {
-        cout << colors[pixel];
-        cout << setfill('0') << setw(3) << pixel << " ";
-        cout << __COLOR_BLUE;
-      }
-      cout << endl;
-    });
-
-    DEBUG_EXEC(for (auto l : distances) {
-      for (int d : l) {
-        cout << setfill('0') << setw(3) << d << " ";
-      }
-      cout << endl;
-    });
   }
 
   return new Imagen(img->getPath(), img->getAncho(), img->getAlto(),
-                    img->getMaxIntensidad(), contenido);
+                    maxIntensidad, contenido);
 }
 
 #endif
