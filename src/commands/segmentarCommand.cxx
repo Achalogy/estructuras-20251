@@ -45,11 +45,11 @@ int handlerSegmentar(vector<string> argv, Memoria &memoria) {
       cout << " x: " << x << endl;
 
       if (y < 0 || y > img->getAlto() || x < 0 || x > img->getAncho()) {
-        throw new runtime_error("La semilla tiene unas coordenadas invalidas");
+        throw runtime_error("La semilla tiene unas coordenadas invalidas");
       }
 
       if (tag < 1 || tag > 255) {
-        throw new runtime_error("La semilla tiene un tag invalido (0-255)");
+        throw runtime_error("La semilla tiene un tag invalido (0-255)");
       }
 
       semillas.push_back(Semilla(tag, x, y));

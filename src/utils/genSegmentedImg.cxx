@@ -15,10 +15,16 @@ using namespace std;
 
 #define dijNode pair<ul, TADNodo>
 
+struct CompareWeights {
+  bool operator()(const dijNode &a, const dijNode &b) const {
+    return a.first > b.first;  // Min-heap basado solo en .first
+  }
+};
+
 void processNeighborPixel(
     Imagen *img,  // Imagen original
     dijNode a,    // Pixel actual
-    priority_queue<dijNode, vector<dijNode>, greater<dijNode>>
+    priority_queue<dijNode, vector<dijNode>, CompareWeights>
         &q,                         // Cola de prioridad Dijkstra
     vector<vector<ul>> &distances,  // Distancias de la semilla actual
 
@@ -43,12 +49,13 @@ void processNeighborPixel(
 }
 
 Imagen *genSegmentedImg(Imagen *img, vector<Semilla> semillas) {
+  cout << __COLOR_RED << "Aca estoy :D" << endl;
   vector<vector<ul>> finalDistances(img->getAlto(),
                                     vector<ul>(img->getAncho(), ULONG_MAX));
   vector<vector<int>> contenido(img->getAlto(),
                                 vector<int>(img->getAncho(), 0));
 
-  priority_queue<dijNode, vector<dijNode>, greater<dijNode>> q;
+  priority_queue<dijNode, vector<dijNode>, CompareWeights> q;
 
   map<int, string> colors;
   string sColors[5] = {__COLOR_RED, __COLOR_GREEN, __COLOR_YELLOW, __COLOR_CYAN,
