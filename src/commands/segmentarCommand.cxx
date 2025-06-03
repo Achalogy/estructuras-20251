@@ -36,8 +36,19 @@ int handlerSegmentar(vector<string> argv, Memoria &memoria) {
 
       unsigned int y =
           (unsigned char)strtol(argv[3 + (i * 3)].c_str(), &token, 10);
+
+      if (*token != '\0') {
+        throw runtime_error("La coordenada y tiene un valor no numérico");
+      }
+
+      token = NULL;
+
       unsigned int x =
           (unsigned char)strtol(argv[2 + (i * 3)].c_str(), &token, 10);
+
+      if (*token != '\0') {
+        throw runtime_error("La coordenada x tiene un valor no numérico");
+      }
 
       cout << "Semilla " << i + 1 << "  - ";
       cout << " tag: " << (int)tag;
