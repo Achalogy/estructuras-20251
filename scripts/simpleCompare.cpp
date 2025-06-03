@@ -192,18 +192,24 @@ int main(int argc, char** argv) {
     exit(1);
   }
 
+  bool error = false;
+
   cout << "Revisando matriz..." << endl;
   for (int i = 0; i < img1->alto; i++) {
     for (int j = 0; j < img1->ancho; j++) {
       if (img1->contenido[i][j] != img2->contenido[i][j]) {
         cout << "Error en (" << i << "," << j << ")" << endl;
         cout << "Valor = " << img2->contenido[i][j] << endl;
-        exit(1);
+        // exit(1);
+        error = true;
       }
     }
   }
 
-  cout << "Imagen Correcta" << endl;
+  if (!error)
+    cout << "Imagenes iguales" << endl;
+  else
+    cout << "Imagenes diferentes" << endl;
 
   cout << "  Ancho = " << img1->ancho << endl;
   cout << "  Alto = " << img1->alto << endl;
