@@ -4,6 +4,7 @@
 #include <bits/stdc++.h>
 
 #include "../core/TADImagen.h"
+#include "../core/segmentar/TADNodo.h"
 #include "../core/segmentar/TADSemilla.h"
 #include "../lib/colors.h"
 #include "../lib/debug.h"
@@ -12,88 +13,96 @@ using namespace std;
 
 #define ul unsigned long
 
-#define tup tuple<ul, pair<unsigned int, unsigned int>, unsigned char>
+#define dijNode pair<ul, TADNodo>
 
-void followDij(Imagen *img, tup a,
-               priority_queue<tup, vector<tup>, greater<tup>> &q,
-               vector<vector<ul>> &distances, int i, int j) {
-  int y = get<1>(a).first + i;
-  int x = get<1>(a).second + j;
+struct CompareWeights {
+  bool operator()(const dijNode &a, const dijNode &b) const {
+    return a.first > b.first;
+  }
+};
+
+void processNeighborPixel(
+    Imagen *img,  // Imagen original
+    dijNode a,    // Pixel actual
+    priority_queue<dijNode, vector<dijNode>, CompareWeights>
+        &q,                         // Cola de prioridad Dijkstra
+    vector<vector<ul>> &distances,  // Distancias de la semilla actual
+
+    // Usados para simplificar la lógica, por ejemplo, pasando i = 0, j = 1
+    // significaría que estamos revisando el pixel derecho y i = 1, j = 0 el
+    // pixel de abajo
+    int i, int j) {
+  int y = a.second.getY() + i;
+  int x = a.second.getX() + j;
 
   if (y < 0 || y >= distances.size()) return;
   if (x < 0 || x >= distances[0].size()) return;
 
-  ul w = abs(img->getContenido()[get<1>(a).first][get<1>(a).second] -
+  // Calcular el peso de la arista
+  ul w = abs(img->getContenido()[a.second.getY()][a.second.getX()] -
              img->getContenido()[y][x]);
 
-  if (distances[get<1>(a).first][get<1>(a).second] + w < distances[y][x]) {
-    distances[y][x] = distances[get<1>(a).first][get<1>(a).second] + w;
-    q.push(make_tuple(distances[y][x], make_pair(y, x), get<2>(a)));
+  if (distances[a.second.getY()][a.second.getX()] + w < distances[y][x]) {
+    distances[y][x] = distances[a.second.getY()][a.second.getX()] + w;
+    q.push(make_pair(distances[y][x], TADNodo(x, y)));
   }
 }
 
 Imagen *genSegmentedImg(Imagen *img, vector<Semilla> semillas) {
-  vector<vector<int>> contenido(img->getAlto(),
-                                vector<int>(img->getAncho(), 0));
-  vector<vector<ul>> distances(img->getAlto(),
-                               vector<ul>(img->getAncho(), ULONG_MAX));
   vector<vector<ul>> finalDistances(img->getAlto(),
                                     vector<ul>(img->getAncho(), ULONG_MAX));
-  vector<vector<bool>> visited(img->getAlto(),
-                               vector<bool>(img->getAncho(), false));
+  vector<vector<int>> contenido(img->getAlto(),
+                                vector<int>(img->getAncho(), 0));
 
-  priority_queue<tup, vector<tup>, greater<tup>> q;
+  priority_queue<dijNode, vector<dijNode>, CompareWeights> q;
 
-  map<int, string> colors;
-  string sColors[5] = {__COLOR_RED, __COLOR_GREEN, __COLOR_YELLOW, __COLOR_CYAN,
-                       __COLOR_MAGENTA};
-  for (int i = 0; i < semillas.size(); i++) {
-    colors[semillas[i].getTag()] = sColors[i];
-  }
+  int maxIntensidad = 0;
 
   for (Semilla s : semillas) {
-    distances = vector<vector<ul>>(img->getAlto(),
-                                   vector<ul>(img->getAncho(), ULONG_MAX));
-    visited = vector<vector<bool>>(img->getAlto(),
-                                   vector<bool>(img->getAncho(), false));
+    // Por cada semilla son independientes estas variables, para comparar las
+    // distancias tenemos el vector de distancias finales
+
+    maxIntensidad = max(maxIntensidad, (int)s.getTag());
+
+    vector<vector<ul>> distances(img->getAlto(),
+                                 vector<ul>(img->getAncho(), ULONG_MAX));
+    vector<vector<bool>> visited(img->getAlto(),
+                                 vector<bool>(img->getAncho(), false));
+
+    // Poner la semilla, su distancia a si misma es 0
     distances[s.getY()][s.getX()] = 0;
+    // Por la misma razón, este pixel siempre es de esta semilla
     contenido[s.getY()][s.getX()] = s.getTag();
 
-    q.push(make_tuple(0, make_pair(s.getY(), s.getX()), s.getTag()));
+    q.push(make_pair(0, TADNodo(s.getX(), s.getY())));
 
     while (!q.empty()) {
-      tup a = q.top();
+      dijNode a = q.top();
       q.pop();
 
-      if (visited[get<1>(a).first][get<1>(a).second]) continue;
+      unsigned int x = a.second.getX();
+      unsigned int y = a.second.getY();
 
-      visited[get<1>(a).first][get<1>(a).second] = true;
+      if (visited[y][x]) continue;
 
-      if (distances[get<1>(a).first][get<1>(a).second] <
-          finalDistances[get<1>(a).first][get<1>(a).second]) {
-        contenido[get<1>(a).first][get<1>(a).second] = get<2>(a);
-        finalDistances[get<1>(a).first][get<1>(a).second] =
-            distances[get<1>(a).first][get<1>(a).second];
+      visited[y][x] = true;
+
+      if (distances[y][x] < finalDistances[y][x]) {
+        contenido[y][x] = s.getTag();
+
+        finalDistances[y][x] = distances[y][x];
       }
 
-      followDij(img, a, q, distances, -1, 0);
-      followDij(img, a, q, distances, 0, 1);
-      followDij(img, a, q, distances, 1, 0);
-      followDij(img, a, q, distances, 0, -1);
+      // Procesar los pixeles que comparten un lado
+      processNeighborPixel(img, a, q, distances, -1, 0);
+      processNeighborPixel(img, a, q, distances, 0, 1);
+      processNeighborPixel(img, a, q, distances, 1, 0);
+      processNeighborPixel(img, a, q, distances, 0, -1);
     }
-
-    DEBUG_EXEC(for (auto l : contenido) {
-      for (int pixel : l) {
-        cout << colors[pixel];
-        cout << setfill('0') << setw(3) << pixel << " ";
-        cout << __COLOR_BLUE;
-      }
-      cout << endl;
-    });
   }
 
   return new Imagen(img->getPath(), img->getAncho(), img->getAlto(),
-                    img->getMaxIntensidad(), contenido);
+                    maxIntensidad, contenido);
 }
 
 #endif
