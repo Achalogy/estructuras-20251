@@ -30,3 +30,19 @@
 *.exe
 *.out
 *.app
+
+node_modules/
+.build/
+.vscode/
+
+docs/html
+docs/latex
+
+# Backups
+
+*.bundle
+
+# Huffman
+
+*.huf
+*.huff

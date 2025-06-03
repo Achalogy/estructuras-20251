@@ -1,0 +1,1 @@
+g++ -std=c++11 *.cxx main.cpp -o proyecto.out; ./proyecto.out

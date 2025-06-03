@@ -1,0 +1,59 @@
+# Executables
+*.exe
+*.out
+*.app
+
+bin/*
+data/*
+scripts/releaseProject.ts
+scripts/test.sh
+
+# TS Files
+
+.gitignore
+package.json
+tsconfig.json
+.vscode
+bun.lock
+
+node_modules/*
+.git/*
+.vscode/*
+.build/*
+
+docs/html/*
+docs/latex/*
+
+.campusignore
+
+# Doxygen
+
+Doxifile
+
+# Backups
+
+*.bundle
+
+# Tests
+
+src/tests/*
+
+# Make Files
+*.d
+*.o
+Makefile
+Makefile_slow
+
+# Test files
+*.huf
+
+# Graficos
+*.dot
+
+# Imagenes de prueba
+scripts/*.pgm
+*.pgm
+
+# Scripts de prueba
+scripts/jest.sh
+scripts/*.cpp
