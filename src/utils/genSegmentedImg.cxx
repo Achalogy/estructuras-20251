@@ -17,7 +17,7 @@ using namespace std;
 
 struct CompareWeights {
   bool operator()(const dijNode &a, const dijNode &b) const {
-    return a.first > b.first;  // Min-heap basado solo en .first
+    return a.first > b.first;
   }
 };
 
@@ -43,13 +43,12 @@ void processNeighborPixel(
              img->getContenido()[y][x]);
 
   if (distances[a.second.getY()][a.second.getX()] + w < distances[y][x]) {
-    distances[y][x] = distances[a.second.getY()][a.second.getY()] + w;
-    q.push(make_pair(distances[y][x], TADNodo(y, x)));
+    distances[y][x] = distances[a.second.getY()][a.second.getX()] + w;
+    q.push(make_pair(distances[y][x], TADNodo(x, y)));
   }
 }
 
 Imagen *genSegmentedImg(Imagen *img, vector<Semilla> semillas) {
-  cout << __COLOR_RED << "Aca estoy :D" << endl;
   vector<vector<ul>> finalDistances(img->getAlto(),
                                     vector<ul>(img->getAncho(), ULONG_MAX));
   vector<vector<int>> contenido(img->getAlto(),
@@ -78,7 +77,7 @@ Imagen *genSegmentedImg(Imagen *img, vector<Semilla> semillas) {
     // Por la misma razón, este pixel siempre es de esta semilla
     contenido[s.getY()][s.getX()] = s.getTag();
 
-    q.push(make_pair(0, TADNodo(s.getY(), s.getX())));
+    q.push(make_pair(0, TADNodo(s.getX(), s.getY())));
 
     while (!q.empty()) {
       dijNode a = q.top();
@@ -115,7 +114,7 @@ Imagen *genSegmentedImg(Imagen *img, vector<Semilla> semillas) {
 
     DEBUG_EXEC(for (auto l : distances) {
       for (int d : l) {
-        cout << d << " ";
+        cout << setfill('0') << setw(3) << d << " ";
       }
       cout << endl;
     });
